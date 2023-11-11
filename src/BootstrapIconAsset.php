@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @link https://www.yiiframework.com/
+ *
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
+namespace yii\bootstrap5;
+
+use yii\web\AssetBundle;
+
+/**
+ * Twitter Bootstrap 5 icon bundle
+ */
+class BootstrapIconAsset extends AssetBundle
+{
+    /**
+     * @inheritDoc
+     */
+    public $sourcePath = '@vendor/twbs/bootstrap-icons/font';
+
+    /**
+     * @inheritDoc
+     */
+    public $css = [
+        'bootstrap-icons.css',
+    ];
+}

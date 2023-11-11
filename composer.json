@@ -1,15 +1,17 @@
 {
-    "name": "yii2/template",
-    "type": "library",
-    "description": "_____",
+    "name": "yii2-extensions/bootstrap5",
+    "type": "yii2-extension",
+    "description": "The Twitter Bootstrap5 extension for the Yii framework.",
     "keywords": [
-        "_____"
+        "yii2-extensions",
+        "bootstrap5"
     ],
     "license": "mit",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
+        "npm-asset/bootstrap": "^5.3",
         "yiisoft/yii2": "^2.2"
     },
     "require-dev": {
@@ -19,17 +21,23 @@
     },
     "autoload": {
         "psr-4": {
-            "yii\\template\\": "src"
+            "yii\\bootstrap5\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "yii\\template\\tests\\": "tests"
+            "yiiunit\\extensions\\bootstrap5\\": "tests"
         }
     },
     "extra": {
         "branch-alias": {
             "dev-main": "1.0.x-dev"
+        },
+        "config-plugin-options": {
+            "source-directory": "config"
+        },
+        "config-plugin": {
+            "yii2-bootstrap5": "extension.php"
         }
     },
     "config": {
