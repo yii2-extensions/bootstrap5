@@ -1,8 +1,8 @@
 <p align="center">
-    <a href="https://github.com/yii2-extensions/template" target="_blank">
+    <a href="https://github.com/yii2-extensions/bootstrap5" target="_blank">
         <img src="https://www.yiiframework.com/image/yii_logo_light.svg" height="100px;">
     </a>
-    <h1 align="center">Yii2-Template.</h1>
+    <h1 align="center">Twitter Bootstrap5.</h1>
     <br>
 </p>
 
@@ -13,21 +13,21 @@
     <a href="https://github.com/yiisoft/yii2/tree/2.2" target="_blank">
         <img src="https://img.shields.io/badge/Yii2%20version-2.2-blue" alt="yii2-version">
     </a>
-    <a href="https://github.com/yii2-extensions/template/actions/workflows/build.yml" target="_blank">
-        <img src="https://github.com/yii2-extensions/template/actions/workflows/build.yml/badge.svg" alt="PHPUnit">
+    <a href="https://github.com/yii2-extensions/bootstrap5/actions/workflows/build.yml" target="_blank">
+        <img src="https://github.com/yii2-extensions/bootstrap5/actions/workflows/build.yml/badge.svg" alt="PHPUnit">
     </a>
-    <a href="https://codecov.io/gh/yii2-extensions/template" target="_blank">
-        <img src="https://codecov.io/gh/yii2-extensions/template/branch/main/graph/badge.svg?token=MF0XUGVLYC" alt="Codecov">
+    <a href="https://codecov.io/gh/yii2-extensions/bootstrap5" target="_blank">
+        <img src="https://codecov.io/gh/yii2-extensions/bootstrap5/branch/main/graph/badge.svg?token=MF0XUGVLYC" alt="Codecov">
     </a>
-    <a href="https://github.com/yii2-extensions/template/actions/workflows/static.yml" target="_blank">
+    <a href="https://github.com/yii2-extensions/bootstrap5/actions/workflows/static.yml" target="_blank">
         <img src="https://github.com/yii2-extensions/gii/actions/workflows/static.yml/badge.svg" alt="PHPStan">
     </a>
-    <a href="https://github.com/yii2-extensions/template/actions/workflows/static.yml" target="_blank">
+    <a href="https://github.com/yii2-extensions/bootstrap5/actions/workflows/static.yml" target="_blank">
         <img src="https://img.shields.io/badge/PHPStan%20level-2-blue" alt="PHPStan level">
+    </a>
+    <a href="https://github.styleci.io/repos/717251172?branch=main" target="_blank">
+        <img src="https://github.styleci.io/repos/717251172/shield?branch=main" alt="Code style">
     </a>    
-    <a href="https://github.styleci.io/repos/698621511?branch=main" target="_blank">
-        <img src="https://github.styleci.io/repos/698621511/shield?branch=main" alt="Code style">
-    </a>        
 </p>
 
 ## Requirements
