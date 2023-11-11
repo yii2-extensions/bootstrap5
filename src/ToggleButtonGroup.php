@@ -82,10 +82,10 @@ class ToggleButtonGroup extends InputWidget
     /**
      * {@inheritdoc}
      *
-     * @return string
-     *
      * @throws Exception
      * @throws InvalidConfigException
+     *
+     * @return string
      */
     public function run(): string
     {

@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace yii\bootstrap5;
 
 use yii\web\AssetBundle;
-use yii\bootstrap5\BootstrapAsset;
 
 /**
  * Twitter Bootstrap 5 JavaScript bundle.
