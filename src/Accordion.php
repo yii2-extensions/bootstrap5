@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -52,6 +53,7 @@ use yii\helpers\ArrayHelper;
  * ```
  *
  * @see https://getbootstrap.com/docs/5.1/components/collapse/#accordion-example
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
@@ -109,14 +111,13 @@ class Accordion extends Widget
      *     'class' => 'custom-toggle',
      * ]
      * ```
-     *
      */
     public $itemToggleOptions = [];
 
-
     /**
-     * @return string
      * @throws InvalidConfigException
+     *
+     * @return string
      */
     public function run(): string
     {
@@ -124,15 +125,17 @@ class Accordion extends Widget
         Html::addCssClass($this->options, ['widget' => 'accordion']);
 
         return implode("\n", [
-                Html::beginTag('div', $this->options),
-                $this->renderItems(),
-                Html::endTag('div'),
-            ]) . "\n";
+            Html::beginTag('div', $this->options),
+            $this->renderItems(),
+            Html::endTag('div'),
+        ]) . "\n";
     }
 
     /**
      * Renders collapsible items as specified on [[items]].
+     *
      * @throws InvalidConfigException if label isn't specified
+     *
      * @return string the rendering result
      */
     public function renderItems(): string
@@ -151,9 +154,8 @@ class Accordion extends Widget
             if (!array_key_exists('label', $item)) {
                 if (is_int($key)) {
                     throw new InvalidConfigException("The 'label' option is required.");
-                } else {
-                    $item['label'] = $key;
                 }
+                $item['label'] = $key;
             }
             $header = ArrayHelper::remove($item, 'label');
             $options = ArrayHelper::getValue($item, 'options', []);
@@ -166,12 +168,15 @@ class Accordion extends Widget
 
     /**
      * Renders a single collapsible item group
+     *
      * @param string $header a label of the item group [[items]]
      * @param array $item a single item from [[items]]
      * @param int $index the item index as each item group content must have an id
-     * @return string the rendering result
+     *
      * @throws InvalidConfigException
      * @throws Exception
+     *
+     * @return string the rendering result
      */
     public function renderItem(string $header, array $item, int $index): string
     {
@@ -201,12 +206,12 @@ class Accordion extends Widget
                 'type' => 'button',
                 'data' => [
                     'bs-toggle' => 'collapse',
-                    'bs-target' => '#' . $options['id']
+                    'bs-target' => '#' . $options['id'],
                 ],
                 'aria' => [
                     'expanded' => $expand ? 'true' : 'false',
-                    'controls' => $options['id']
-                ]
+                    'controls' => $options['id'],
+                ],
             ], $this->itemToggleOptions);
 
             $itemToggleTag = ArrayHelper::remove($itemToggleOptions, 'tag', 'button');
@@ -220,10 +225,10 @@ class Accordion extends Widget
                     Html::addCssClass($itemToggleOptions, ['widget' => 'accordion-button']);
                 }
                 $headerToggle = Button::widget([
-                        'label' => $header,
-                        'encodeLabel' => false,
-                        'options' => $itemToggleOptions,
-                    ]) . "\n";
+                    'label' => $header,
+                    'encodeLabel' => false,
+                    'options' => $itemToggleOptions,
+                ]) . "\n";
             }
 
             $header = Html::tag('h5', $headerToggle, ['class' => 'mb-0']);
@@ -232,12 +237,12 @@ class Accordion extends Widget
                 $content = Html::tag('div', $item['content'], ['class' => 'accordion-body']) . "\n";
             } elseif (is_array($item['content'])) {
                 $content = Html::ul($item['content'], [
-                        'class' => 'list-group',
-                        'itemOptions' => [
-                            'class' => 'list-group-item',
-                        ],
-                        'encode' => false,
-                    ]) . "\n";
+                    'class' => 'list-group',
+                    'itemOptions' => [
+                        'class' => 'list-group-item',
+                    ],
+                    'encode' => false,
+                ]) . "\n";
             } else {
                 throw new InvalidConfigException('The "content" option should be a string, array or object.');
             }

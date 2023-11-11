@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -60,6 +61,7 @@ use yii\helpers\ArrayHelper;
  *
  * @see https://getbootstrap.com/docs/5.1/components/navs/#tabs
  * @see https://getbootstrap.com/docs/5.1/components/card/#navigation
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
@@ -101,12 +103,14 @@ class Tabs extends Widget
     /**
      * @var array list of HTML attributes for the header container tags. This will be overwritten
      * by the "headerOptions" set in individual [[items]].
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $headerOptions = [];
     /**
      * @var array list of HTML attributes for the tab header link tags. This will be overwritten
      * by the "linkOptions" set in individual [[items]].
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $linkOptions = [];
@@ -125,6 +129,7 @@ class Tabs extends Widget
     public $renderTabContent = true;
     /**
      * @var array list of HTML attributes for the `tab-content` container. This will always contain the CSS class `tab-content`.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $tabContentOptions = [];
@@ -138,7 +143,6 @@ class Tabs extends Widget
      */
     protected $panes = [];
 
-
     /**
      * {@inheritdoc}
      */
@@ -151,6 +155,7 @@ class Tabs extends Widget
 
     /**
      * {@inheritdoc}
+     *
      * @throws InvalidConfigException
      * @throws Throwable
      */
@@ -160,17 +165,18 @@ class Tabs extends Widget
         $this->prepareItems($this->items);
 
         return Nav::widget([
-                'dropdownClass' => $this->dropdownClass,
-                'options' => ArrayHelper::merge(['role' => 'tablist'], $this->options),
-                'items' => $this->items,
-                'encodeLabels' => $this->encodeLabels,
-            ]) . $this->renderPanes($this->panes);
+            'dropdownClass' => $this->dropdownClass,
+            'options' => ArrayHelper::merge(['role' => 'tablist'], $this->options),
+            'items' => $this->items,
+            'encodeLabels' => $this->encodeLabels,
+        ]) . $this->renderPanes($this->panes);
     }
 
     /**
      * Renders tab panes.
      *
      * @param array $panes
+     *
      * @return string the rendering result.
      */
     public function renderPanes(array $panes): string
@@ -183,6 +189,7 @@ class Tabs extends Widget
      *
      * @param array $items
      * @param string $prefix
+     *
      * @throws InvalidConfigException
      * @throws Exception
      */
@@ -210,20 +217,20 @@ class Tabs extends Widget
             if (isset($item['items'])) {
                 $this->prepareItems($items[$n]['items'], '-dd' . $n);
                 continue;
-            } else {
-                ArrayHelper::setValue($items[$n], 'options', $headerOptions);
-                if (!isset($item['url'])) {
-                    ArrayHelper::setValue($items[$n], 'url', '#' . $options['id']);
-                    ArrayHelper::setValue($items[$n], 'linkOptions.data.bs-toggle', 'tab');
-                    ArrayHelper::setValue($items[$n], 'linkOptions.role', 'tab');
-                    ArrayHelper::setValue($items[$n], 'linkOptions.aria.controls', $options['id']);
-                    if (!$disabled) {
-                        ArrayHelper::setValue($items[$n], 'linkOptions.aria.selected', $selected ? 'true' : 'false');
-                    }
-                } else {
-                    continue;
-                }
             }
+            ArrayHelper::setValue($items[$n], 'options', $headerOptions);
+            if (!isset($item['url'])) {
+                ArrayHelper::setValue($items[$n], 'url', '#' . $options['id']);
+                ArrayHelper::setValue($items[$n], 'linkOptions.data.bs-toggle', 'tab');
+                ArrayHelper::setValue($items[$n], 'linkOptions.role', 'tab');
+                ArrayHelper::setValue($items[$n], 'linkOptions.aria.controls', $options['id']);
+                if (!$disabled) {
+                    ArrayHelper::setValue($items[$n], 'linkOptions.aria.selected', $selected ? 'true' : 'false');
+                }
+            } else {
+                continue;
+            }
+
 
             Html::addCssClass($options, ['widget' => 'tab-pane']);
             if ($selected) {
@@ -258,6 +265,7 @@ class Tabs extends Widget
      *
      * This method activates the first tab that is visible and
      * not explicitly set to inactive (`'active' => false`).
+     *
      * @throws Exception
      */
     protected function activateFirstVisibleTab()

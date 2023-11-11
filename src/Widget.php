@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -18,6 +19,7 @@ class Widget extends \yii\base\Widget
 
     /**
      * @var array the HTML attributes for the widget container tag.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $options = [];

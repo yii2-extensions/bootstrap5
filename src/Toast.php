@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -43,6 +44,7 @@ use yii\helpers\ArrayHelper;
  * ```
  *
  * @see https://getbootstrap.com/docs/5.1/components/toasts/
+ *
  * @author Simon Karlen <simi.albi@outlook.com>
  */
 class Toast extends Widget
@@ -58,7 +60,7 @@ class Toast extends Widget
      */
     public $title = null;
     /**
-     * @var int|string|DateTime|DateTimeInterface|DateInterval|false The date time the toast message references to.
+     * @var DateInterval|DateTime|DateTimeInterface|false|int|string The date time the toast message references to.
      * This will be formatted as relative time (via formatter component). It will be omitted if
      * set to `false` (default).
      */
@@ -99,15 +101,16 @@ class Toast extends Widget
     public $dateTimeOptions = [];
     /**
      * @var array additional header options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $headerOptions = [];
     /**
      * @var array body options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $bodyOptions = [];
-
 
     /**
      * {@inheritdoc}
@@ -136,6 +139,7 @@ class Toast extends Widget
 
     /**
      * Renders the header HTML markup of the modal
+     *
      * @return string the rendering result
      */
     protected function renderHeader(): string
@@ -160,6 +164,7 @@ class Toast extends Widget
 
     /**
      * Renders the opening tag of the toast body.
+     *
      * @return string the rendering result
      */
     protected function renderBodyBegin(): string
@@ -171,6 +176,7 @@ class Toast extends Widget
 
     /**
      * Renders the toast body and the close button (if any).
+     *
      * @return string the rendering result
      */
     protected function renderBodyEnd(): string
@@ -180,6 +186,7 @@ class Toast extends Widget
 
     /**
      * Renders the close button.
+     *
      * @return string|null the rendering result
      */
     protected function renderCloseButton()
@@ -192,9 +199,8 @@ class Toast extends Widget
             }
 
             return Html::tag($tag, $label, $closeButton);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -209,7 +215,7 @@ class Toast extends Widget
             $this->closeButton = array_merge([
                 'class' => ['widget' => 'btn-close'],
                 'data' => ['bs-dismiss' => 'toast'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')],
             ], $this->closeButton);
         }
 

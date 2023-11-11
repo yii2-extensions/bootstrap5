@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -22,7 +23,9 @@ use yii\base\InvalidConfigException;
  *     'options' => ['class' => 'btn-lg'],
  * ]);
  * ```
+ *
  * @see https://getbootstrap.com/docs/5.1/components/buttons/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  */
 class Button extends Widget
@@ -40,10 +43,10 @@ class Button extends Widget
      */
     public $encodeLabel = true;
 
-
     /**
      * Initializes the widget.
      * If you override this method, make sure you call the parent implementation first.
+     *
      * @throws InvalidConfigException
      */
     public function init()
@@ -55,6 +58,7 @@ class Button extends Widget
 
     /**
      * {@inheritdoc}
+     *
      * @return string
      */
     public function run(): string

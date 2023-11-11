@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -60,7 +61,6 @@ class ButtonGroup extends Widget
      */
     public $encodeLabels = true;
 
-
     /**
      * {@inheritdoc}
      */
@@ -75,8 +75,10 @@ class ButtonGroup extends Widget
 
     /**
      * {@inheritdoc}
-     * @return string
+     *
      * @throws Throwable
+     *
+     * @return string
      */
     public function run(): string
     {
@@ -87,8 +89,10 @@ class ButtonGroup extends Widget
 
     /**
      * Generates the buttons that compound the group as specified on [[buttons]].
-     * @return string the rendering result.
+     *
      * @throws Throwable
+     *
+     * @return string the rendering result.
      */
     protected function renderButtons(): string
     {

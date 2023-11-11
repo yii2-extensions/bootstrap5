@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -76,7 +77,9 @@ use yii\helpers\ArrayHelper;
  *     ]
  * ]);
  * ```
+ *
  * @see https://getbootstrap.com/docs/5.1/components/progress/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Alexander Makarov <sam@rmcreative.ru>
  * @author Simon Karlen <simi.albi@outlook.com>
@@ -93,6 +96,7 @@ class Progress extends Widget
     public $percent = 0;
     /**
      * @var array the HTML attributes of the bar. This property will only be considered if [[bars]] is empty
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $barOptions = [];
@@ -113,7 +117,6 @@ class Progress extends Widget
      */
     public $bars;
 
-
     /**
      * {@inheritdoc}
      */
@@ -126,6 +129,7 @@ class Progress extends Widget
 
     /**
      * {@inheritdoc}
+     *
      * @throws InvalidConfigException
      */
     public function run(): string
@@ -137,9 +141,11 @@ class Progress extends Widget
 
     /**
      * Renders the progress.
-     * @return string the rendering result.
+     *
      * @throws InvalidConfigException if the "percent" option is not set in a stacked progress bar.
      * @throws Exception
+     *
+     * @return string the rendering result.
      */
     protected function renderProgress(): string
     {
@@ -166,21 +172,22 @@ class Progress extends Widget
 
     /**
      * Generates a progress bar.
+     *
      * @param int $percent the percentage of the bar
      * @param string $label optional, the label to display at the bar
      * @param array $options the HTML attributes of the bar
+     *
      * @return string the rendering result.
      */
     protected function renderBar(int $percent, string $label = '', array $options = []): string
     {
-
         $options = array_merge($options, [
             'role' => 'progressbar',
             'aria' => [
                 'valuenow' => $percent,
                 'valuemin' => 0,
                 'valuemax' => 100,
-            ]
+            ],
         ]);
         Html::addCssClass($options, ['widget' => 'progress-bar']);
         Html::addCssStyle($options, ['width' => $percent . '%'], true);

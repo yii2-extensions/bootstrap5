@@ -93,11 +93,9 @@ class NavBarTest extends TestCase
         $this->assertStringContainsString('<span class="navbar-brand">Yii Framework</span>', $out);
     }
 
-    /**
-     */
+
     public function testNavAndForm(): void
     {
-
         NavBar::$counter = 0;
 
         ob_start();
@@ -111,7 +109,7 @@ class NavBarTest extends TestCase
         echo Nav::widget(
             [
                 'options' => [
-                    'class' => ['mr-auto']
+                    'class' => ['mr-auto'],
                 ],
                 'items' => [
                     ['label' => 'Home', 'url' => '#'],
@@ -121,8 +119,8 @@ class NavBarTest extends TestCase
                         ['label' => 'Another action', 'url' => '#'],
                         '-',
                         ['label' => 'Something else here', 'url' => '#'],
-                    ]]
-                ]
+                    ]],
+                ],
             ],
         );
         echo <<<HTML
@@ -166,22 +164,22 @@ class NavBarTest extends TestCase
                 'brandLabel' => 'Offcanvas navbar',
                 'brandUrl' => ['/'],
                 'options' => [
-                    'class' => ['navbar', 'navbar-light', 'bg-light', 'fixed-top']
+                    'class' => ['navbar', 'navbar-light', 'bg-light', 'fixed-top'],
                 ],
                 'innerContainerOptions' => [
-                    'class' => ['container-fluid']
+                    'class' => ['container-fluid'],
                 ],
                 'collapseOptions' => false,
                 'offcanvasOptions' => [
                     'title' => 'Offcanvas',
-                    'placement' => Offcanvas::PLACEMENT_END
+                    'placement' => Offcanvas::PLACEMENT_END,
                 ],
             ],
         );
         echo Nav::widget(
             [
                 'options' => [
-                    'class' => ['navbar-nav']
+                    'class' => ['navbar-nav'],
                 ],
                 'items' => [
                     ['label' => 'Home', 'url' => '#'],

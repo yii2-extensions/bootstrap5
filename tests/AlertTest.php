@@ -20,7 +20,7 @@ class AlertTest extends TestCase
             [
                 'body' => '<strong>Holy guacamole!</strong> You should check in on some of those fields below.',
                 'options' => [
-                    'class' => ['alert-warning']
+                    'class' => ['alert-warning'],
                 ],
             ],
         );
@@ -36,12 +36,11 @@ class AlertTest extends TestCase
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    /**
-     */
+
     public function testDismissibleAlert(): void
     {
         Alert::$counter = 0;
-        $html = Alert::widget(['body' => "Message1"]);
+        $html = Alert::widget(['body' => 'Message1']);
 
         $expectedHtml = <<<HTML
         <div id="w0" class="alert alert-dismissible" role="alert">
@@ -71,7 +70,7 @@ class AlertTest extends TestCase
                     'style' => [
                         'position' => 'absolute',
                         'top' => '.5rem',
-                        'right' => '.5rem'
+                        'right' => '.5rem',
                     ],
                 ],
             ],

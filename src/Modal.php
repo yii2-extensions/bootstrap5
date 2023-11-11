@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -31,6 +32,7 @@ use yii\helpers\ArrayHelper;
  * ~~~
  *
  * @see https://getbootstrap.com/docs/5.1/components/modal/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
@@ -40,19 +42,19 @@ class Modal extends Widget
     /**
      * The additional css class of extra large modal
      */
-    const SIZE_EXTRA_LARGE = 'modal-xl';
+    public const SIZE_EXTRA_LARGE = 'modal-xl';
     /**
      * The additional css class of large modal
      */
-    const SIZE_LARGE = 'modal-lg';
+    public const SIZE_LARGE = 'modal-lg';
     /**
      * The additional css class of small modal
      */
-    const SIZE_SMALL = 'modal-sm';
+    public const SIZE_SMALL = 'modal-sm';
     /**
      * The additional css class of default modal
      */
-    const SIZE_DEFAULT = '';
+    public const SIZE_DEFAULT = '';
 
     /**
      * @var string the title content in the modal window.
@@ -60,16 +62,19 @@ class Modal extends Widget
     public $title;
     /**
      * @var array additional title options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $titleOptions = [];
     /**
      * @var array additional header options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $headerOptions = [];
     /**
      * @var array body options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $bodyOptions = [];
@@ -79,6 +84,7 @@ class Modal extends Widget
     public $footer;
     /**
      * @var array additional footer options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $footerOptions = [];
@@ -116,26 +122,27 @@ class Modal extends Widget
      */
     public $toggleButton = false;
     /**
-     * @var boolean whether to center the modal vertically
+     * @var bool whether to center the modal vertically
      *
      * When true the modal-dialog-centered class will be added to the modal-dialog
      */
     public $centerVertical = false;
     /**
-     * @var boolean whether to make the modal body scrollable
+     * @var bool whether to make the modal body scrollable
      *
      * When true the modal-dialog-scrollable class will be added to the modal-dialog
      */
     public $scrollable = false;
     /**
      * @var array modal dialog options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $dialogOptions = [];
 
-
     /**
      * {@inheritDoc}
+     *
      * @throws InvalidConfigException
      */
     public function init()
@@ -168,6 +175,7 @@ class Modal extends Widget
 
     /**
      * Renders the header HTML markup of the modal
+     *
      * @return string the rendering result
      */
     protected function renderHeader(): string
@@ -192,6 +200,7 @@ class Modal extends Widget
 
     /**
      * Renders the opening tag of the modal body.
+     *
      * @return string the rendering result
      */
     protected function renderBodyBegin(): string
@@ -203,6 +212,7 @@ class Modal extends Widget
 
     /**
      * Renders the closing tag of the modal body.
+     *
      * @return string the rendering result
      */
     protected function renderBodyEnd(): string
@@ -212,6 +222,7 @@ class Modal extends Widget
 
     /**
      * Renders the HTML markup for the footer of the modal
+     *
      * @return string|null the rendering result
      */
     protected function renderFooter()
@@ -220,13 +231,13 @@ class Modal extends Widget
             Html::addCssClass($this->footerOptions, ['widget' => 'modal-footer']);
 
             return Html::tag('div', "\n" . $this->footer . "\n", $this->footerOptions);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
      * Renders the toggle button.
+     *
      * @return string|null the rendering result
      */
     protected function renderToggleButton()
@@ -236,13 +247,13 @@ class Modal extends Widget
             $label = ArrayHelper::remove($toggleButton, 'label', 'Show');
 
             return Html::tag($tag, $label, $toggleButton);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
      * Renders the close button.
+     *
      * @return string|null the rendering result
      */
     protected function renderCloseButton()
@@ -255,9 +266,8 @@ class Modal extends Widget
             }
 
             return Html::tag($tag, $label, $closeButton);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -287,7 +297,7 @@ class Modal extends Widget
             $this->closeButton = array_merge([
                 'class' => ['widget' => 'btn-close'],
                 'data' => ['bs-dismiss' => 'modal'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')],
             ], $this->closeButton);
         }
 

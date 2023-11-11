@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -37,6 +38,7 @@ use yii\helpers\ArrayHelper;
  * ```
  *
  * @see https://getbootstrap.com/docs/5.1/components/carousel/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
@@ -79,9 +81,9 @@ class Carousel extends Widget
      */
     public $options = ['data' => ['bs-ride' => 'carousel']];
 
-
     /**
      * {@inheritDoc}
+     *
      * @throws InvalidConfigException
      */
     public function init()
@@ -95,6 +97,7 @@ class Carousel extends Widget
 
     /**
      * {@inheritdoc}
+     *
      * @throws InvalidConfigException
      */
     public function run(): string
@@ -102,16 +105,17 @@ class Carousel extends Widget
         $this->registerPlugin('carousel');
 
         return implode("\n", [
-                Html::beginTag('div', $this->options),
-                $this->renderIndicators(),
-                $this->renderItems(),
-                $this->renderControls(),
-                Html::endTag('div'),
-            ]) . "\n";
+            Html::beginTag('div', $this->options),
+            $this->renderIndicators(),
+            $this->renderItems(),
+            $this->renderControls(),
+            Html::endTag('div'),
+        ]) . "\n";
     }
 
     /**
      * Renders carousel indicators.
+     *
      * @return string the rendering result
      */
     public function renderIndicators(): string
@@ -124,9 +128,9 @@ class Carousel extends Widget
             $options = [
                 'data' => [
                     'bs-target' => '#' . $this->options['id'],
-                    'bs-slide-to' => $i
+                    'bs-slide-to' => $i,
                 ],
-                'type' => 'button'
+                'type' => 'button',
             ];
             if ($i === 0) {
                 Html::addCssClass($options, ['activate' => 'active']);
@@ -140,8 +144,10 @@ class Carousel extends Widget
 
     /**
      * Renders carousel items as specified on [[items]].
-     * @return string the rendering result
+     *
      * @throws InvalidConfigException
+     *
+     * @return string the rendering result
      */
     public function renderItems(): string
     {
@@ -155,11 +161,14 @@ class Carousel extends Widget
 
     /**
      * Renders a single carousel item
-     * @param string|array $item a single item from [[items]]
+     *
+     * @param array|string $item a single item from [[items]]
      * @param int $index the item index as the first item should be set to `active`
-     * @return string the rendering result
+     *
      * @throws InvalidConfigException if the item is invalid
      * @throws Exception
+     *
+     * @return string the rendering result
      */
     public function renderItem($item, int $index): string
     {
@@ -192,33 +201,33 @@ class Carousel extends Widget
     /**
      * Renders previous and next control buttons.
      *
-     * @return string The rendered controls
-     *
      * @throws InvalidConfigException if [[controls]] is invalid.
+     *
+     * @return string The rendered controls
      */
     public function renderControls(): string
     {
         if (isset($this->controls[0], $this->controls[1])) {
             return Html::button($this->controls[0], [
-                    'class' => 'carousel-control-prev',
-                    'data' => [
-                        'bs-target' => '#' . $this->options['id'],
-                        'bs-slide' => 'prev'
-                    ],
-                    'type' => 'button',
-                ]) . "\n"
+                'class' => 'carousel-control-prev',
+                'data' => [
+                    'bs-target' => '#' . $this->options['id'],
+                    'bs-slide' => 'prev',
+                ],
+                'type' => 'button',
+            ]) . "\n"
                 . Html::button($this->controls[1], [
                     'class' => 'carousel-control-next',
                     'data' => [
                         'bs-target' => '#' . $this->options['id'],
-                        'bs-slide' => 'next'
+                        'bs-slide' => 'next',
                     ],
                     'type' => 'button',
                 ]);
-        } elseif ($this->controls === false) {
-            return '';
-        } else {
-            throw new InvalidConfigException('The "controls" property must be either false or an array of two elements.');
         }
+        if ($this->controls === false) {
+            return '';
+        }
+        throw new InvalidConfigException('The "controls" property must be either false or an array of two elements.');
     }
 }

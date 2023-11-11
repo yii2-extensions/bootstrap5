@@ -18,7 +18,7 @@ class ModalTest extends TestCase
         $out = Modal::widget(
             [
                 'closeButton' => false,
-                'bodyOptions' => ['class' => 'modal-body test', 'style' => 'text-align:center;']
+                'bodyOptions' => ['class' => 'modal-body test', 'style' => 'text-align:center;'],
             ],
         );
 
@@ -40,8 +40,7 @@ class ModalTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testContainerOptions(): void
     {
         Modal::$counter = 0;
@@ -49,17 +48,17 @@ class ModalTest extends TestCase
         ob_start();
         Modal::begin(
             [
-            'title' => 'Modal title',
-            'footer' => Html::button('Close', [
+                'title' => 'Modal title',
+                'footer' => Html::button('Close', [
                     'type' => 'button',
                     'class' => ['btn', 'btn-secondary'],
                     'data' => [
-                        'bs-dismiss' => 'modal'
-                    ]
+                        'bs-dismiss' => 'modal',
+                    ],
                 ]) . "\n" . Html::button('Save changes', [
                     'type' => 'button',
-                    'class' => ['btn', 'btn-primary']
-                ])
+                    'class' => ['btn', 'btn-primary'],
+                ]),
             ],
         );
         echo '<p>Woohoo, you\'re reading this text in a modal!</p>';
@@ -98,16 +97,16 @@ class ModalTest extends TestCase
             [
                 'toggleButton' => [
                     'class' => ['btn', 'btn-primary'],
-                    'label' => 'Launch demo modal'
+                    'label' => 'Launch demo modal',
                 ],
                 'title' => 'Modal title',
                 'footer' => Html::button('Close', [
-                        'type' => 'button',
-                        'class' => ['btn', 'btn-secondary']
-                    ]) . "\n" . Html::button('Save changes', [
-                        'type' => 'button',
-                        'class' => ['btn', 'btn-primary']
-                    ])
+                    'type' => 'button',
+                    'class' => ['btn', 'btn-secondary'],
+                ]) . "\n" . Html::button('Save changes', [
+                    'type' => 'button',
+                    'class' => ['btn', 'btn-primary'],
+                ]),
             ],
         );
         echo '<p>Woohoo, you\'re reading this text in a modal!</p>';
@@ -126,7 +125,7 @@ class ModalTest extends TestCase
         $out = Modal::widget(
             [
                 'closeButton' => false,
-                'dialogOptions' => ['class' => 'test', 'style' => 'text-align:center;']
+                'dialogOptions' => ['class' => 'test', 'style' => 'text-align:center;'],
             ],
         );
 

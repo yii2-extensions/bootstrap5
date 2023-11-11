@@ -70,9 +70,9 @@ class ButtonDropdownTest extends TestCase
                 'dropdown' => [
                     'items' => [
                         ['label' => 'ItemA', 'url' => '#'],
-                        ['label' => 'ItemB', 'url' => '#']
-                    ]
-                ]
+                        ['label' => 'ItemB', 'url' => '#'],
+                    ],
+                ],
             ],
         );
 

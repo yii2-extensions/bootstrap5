@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -34,9 +35,10 @@ use yii\helpers\ArrayHelper;
  * NavBar::end();
  * ```
  *
- * @property-write array $containerOptions
+ * @property array $containerOptions
  *
  * @see https://getbootstrap.com/docs/5.1/components/navbar/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Alexander Kochetov <creocoder@gmail.com>
  */
@@ -65,23 +67,26 @@ class NavBar extends Widget
      */
     public $offcanvasOptions = false;
     /**
-     * @var string|bool the text of the brand or false if it's not used. Note that this is not HTML-encoded.
+     * @var bool|string the text of the brand or false if it's not used. Note that this is not HTML-encoded.
+     *
      * @see https://getbootstrap.com/docs/5.1/components/navbar/
      */
     public $brandLabel = false;
     /**
-     * @var string|bool src of the brand image or false if it's not used. Note that this param will override `$this->brandLabel` param.
+     * @var bool|string src of the brand image or false if it's not used. Note that this param will override `$this->brandLabel` param.
+     *
      * @see https://getbootstrap.com/docs/5.1/components/navbar/
      */
     public $brandImage = false;
 
     /**
      * @var array the HTML attributes of the brand image.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $brandImageOptions = [];
     /**
-     * @var array|string|bool $url the URL for the brand's hyperlink tag. This parameter will be processed by [[\yii\helpers\Url::to()]]
+     * @var array|bool|string $url the URL for the brand's hyperlink tag. This parameter will be processed by [[\yii\helpers\Url::to()]]
      * and will be used for the "href" attribute of the brand link. Default value is false that means
      * [[\yii\web\Application::homeUrl]] will be used.
      * You may set it to `null` if you want to have no link at all.
@@ -89,6 +94,7 @@ class NavBar extends Widget
     public $brandUrl = false;
     /**
      * @var array the HTML attributes of the brand link.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $brandOptions = [];
@@ -102,6 +108,7 @@ class NavBar extends Widget
     public $togglerContent = '<span class="navbar-toggler-icon"></span>';
     /**
      * @var array the HTML attributes of the navbar toggler button.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $togglerOptions = [];
@@ -112,6 +119,7 @@ class NavBar extends Widget
     public $renderInnerContainer = true;
     /**
      * @var array the HTML attributes of the inner container.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $innerContainerOptions = [];
@@ -119,7 +127,6 @@ class NavBar extends Widget
      * {@inheritdoc}
      */
     public $clientOptions = [];
-
 
     /**
      * {@inheritDoc}
@@ -132,7 +139,7 @@ class NavBar extends Widget
                 'widget' => 'navbar',
                 'toggle' => 'navbar-expand-lg',
                 'navbar-light',
-                'bg-light'
+                'bg-light',
             ]);
         } else {
             Html::addCssClass($this->options, ['widget' => 'navbar']);
@@ -201,6 +208,7 @@ class NavBar extends Widget
 
     /**
      * Renders collapsible toggle button.
+     *
      * @return string the rendering toggle button.
      */
     protected function renderToggleButton(): string
@@ -228,7 +236,7 @@ class NavBar extends Widget
                     'controls' => $aria,
                     'expanded' => 'false',
                     'label' => $this->screenReaderToggleText ?: Yii::t('yii/bootstrap5', 'Toggle navigation'),
-                ]
+                ],
             ])
         );
     }

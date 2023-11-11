@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -77,8 +78,7 @@ class LinkPagerTest extends TestCase
         $this->assertStringContainsString('<li class="page-item prev disabled"><a class="page-link foo-bar"', $output);
     }
 
-    /**
-     */
+
     public function testOverrideDisabledPageElementOptions(): void
     {
         $output = LinkPager::widget(
@@ -163,7 +163,7 @@ class LinkPagerTest extends TestCase
                 'pagination' => $this->getPagination(1),
                 'on init' => function () use (&$initTriggered): void {
                     $initTriggered = true;
-                }
+                },
             ],
         );
         $this->assertTrue($initTriggered);
@@ -185,6 +185,7 @@ class LinkPagerTest extends TestCase
 
     /**
      * Get pagination.
+     *
      * @return Pagination
      */
     private function getPagination(int $page)

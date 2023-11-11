@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -66,7 +67,6 @@ class ButtonToolbar extends Widget
      */
     public $buttonGroups = [];
 
-
     /**
      * {@inheritdoc}
      */
@@ -81,8 +81,10 @@ class ButtonToolbar extends Widget
 
     /**
      * {@inheritdoc}
-     * @return string
+     *
      * @throws Throwable
+     *
+     * @return string
      */
     public function run(): string
     {
@@ -93,8 +95,10 @@ class ButtonToolbar extends Widget
 
     /**
      * Generates the button groups that compound the toolbar as specified on [[buttonGroups]].
-     * @return string the rendering result.
+     *
      * @throws Throwable
+     *
+     * @return string the rendering result.
      */
     protected function renderButtonGroups(): string
     {

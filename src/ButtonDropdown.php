@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -31,8 +32,10 @@ use yii\helpers\Url;
  *     ],
  * ]);
  * ```
+ *
  * @see https://getbootstrap.com/docs/5.1/components/buttons/
  * @see https://getbootstrap.com/docs/5.1/components/dropdowns/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  */
 class ButtonDropdown extends Widget
@@ -40,19 +43,19 @@ class ButtonDropdown extends Widget
     /**
      * The css class part of dropdown
      */
-    const DIRECTION_DOWN = 'down';
+    public const DIRECTION_DOWN = 'down';
     /**
      * The css class part of dropleft
      */
-    const DIRECTION_LEFT = 'left';
+    public const DIRECTION_LEFT = 'left';
     /**
      * The css class part of dropright
      */
-    const DIRECTION_RIGHT = 'right';
+    public const DIRECTION_RIGHT = 'right';
     /**
      * The css class part of dropup
      */
-    const DIRECTION_UP = 'up';
+    public const DIRECTION_UP = 'up';
 
     /**
      * @var string|null the button label
@@ -68,6 +71,7 @@ class ButtonDropdown extends Widget
     public $options = [];
     /**
      * @var array the HTML attributes of the button.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $buttonOptions = [];
@@ -103,7 +107,6 @@ class ButtonDropdown extends Widget
      */
     public $renderContainer = true;
 
-
     /**
      * {@inheritdoc}
      */
@@ -121,8 +124,10 @@ class ButtonDropdown extends Widget
 
     /**
      * {@inheritdoc}
-     * @return string
+     *
      * @throws Throwable
+     *
+     * @return string
      */
     public function run(): string
     {
@@ -145,8 +150,10 @@ class ButtonDropdown extends Widget
 
     /**
      * Generates the button dropdown.
-     * @return string the rendering result.
+     *
      * @throws Throwable
+     *
+     * @return string the rendering result.
      */
     protected function renderButton(): string
     {
@@ -188,18 +195,20 @@ class ButtonDropdown extends Widget
         }
 
         return Button::widget([
-                'tagName' => $this->tagName,
-                'label' => $label,
-                'options' => $buttonOptions,
-                'encodeLabel' => false,
-                'view' => $this->getView(),
-            ]) . "\n" . $splitButton;
+            'tagName' => $this->tagName,
+            'label' => $label,
+            'options' => $buttonOptions,
+            'encodeLabel' => false,
+            'view' => $this->getView(),
+        ]) . "\n" . $splitButton;
     }
 
     /**
      * Generates the dropdown menu.
-     * @return string the rendering result.
+     *
      * @throws Throwable
+     *
+     * @return string the rendering result.
      */
     protected function renderDropdown(): string
     {

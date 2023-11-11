@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -82,6 +83,7 @@ class Nav extends Widget
     /**
      * @var bool whether to automatically activate items according to whether their route setting
      * matches the currently requested route.
+     *
      * @see isItemActive
      */
     public $activateItems = true;
@@ -92,6 +94,7 @@ class Nav extends Widget
     /**
      * @var string|null the route used to determine if a menu item is active or not.
      * If not set, it will use the route of the current request.
+     *
      * @see params
      * @see isItemActive
      */
@@ -99,6 +102,7 @@ class Nav extends Widget
     /**
      * @var array|null the parameters used to determine if a menu item is active or not.
      * If not set, it will use `$_GET`.
+     *
      * @see route
      * @see isItemActive
      */
@@ -107,7 +111,6 @@ class Nav extends Widget
      * @var string name of a class to use for rendering dropdowns within this widget. Defaults to [[Dropdown]].
      */
     public $dropdownClass = Dropdown::class;
-
 
     /**
      * {@inheritDoc}
@@ -126,8 +129,10 @@ class Nav extends Widget
 
     /**
      * Renders the widget.
-     * @return string
+     *
      * @throws InvalidConfigException|Throwable
+     *
+     * @return string
      */
     public function run(): string
     {
@@ -138,8 +143,10 @@ class Nav extends Widget
 
     /**
      * Renders widget items.
-     * @return string
+     *
      * @throws InvalidConfigException|Throwable
+     *
+     * @return string
      */
     public function renderItems(): string
     {
@@ -156,10 +163,13 @@ class Nav extends Widget
 
     /**
      * Renders a widget's item.
-     * @param string|array $item the item to render.
-     * @return string the rendering result.
+     *
+     * @param array|string $item the item to render.
+     *
      * @throws InvalidConfigException
      * @throws Throwable
+     *
+     * @return string the rendering result.
      */
     public function renderItem($item): string
     {
@@ -208,10 +218,13 @@ class Nav extends Widget
     /**
      * Renders the given items as a dropdown.
      * This method is called to create sub-menus.
+     *
      * @param array $items the given items. Please refer to [[Dropdown::items]] for the array structure.
      * @param array $parentItem the parent item information. Please refer to [[items]] for the structure of this array.
-     * @return string the rendering result.
+     *
      * @throws Throwable
+     *
+     * @return string the rendering result.
      */
     protected function renderDropdown(array $items, array $parentItem): string
     {
@@ -229,10 +242,14 @@ class Nav extends Widget
 
     /**
      * Check to see if a child item is active optionally activating the parent.
+     *
      * @param array $items @see items
      * @param bool $active should the parent be active too
-     * @return array
+     *
      * @throws Exception
+     *
+     * @return array
+     *
      * @see items
      */
     protected function isChildActive(array $items, bool &$active): array
@@ -268,9 +285,12 @@ class Nav extends Widget
      * as the route for the item and the rest of the elements are the associated parameters.
      * Only when its route and parameters match [[route]] and [[params]], respectively, will a menu item
      * be considered active.
+     *
      * @param array $item the menu item to be checked
-     * @return bool whether the menu item is active
+     *
      * @throws Exception
+     *
+     * @return bool whether the menu item is active
      */
     protected function isItemActive(array $item): bool
     {

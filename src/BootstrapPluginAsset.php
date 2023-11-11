@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -25,13 +26,13 @@ class BootstrapPluginAsset extends AssetBundle
      * @inheritDoc
      */
     public $js = [
-        'dist/js/bootstrap.bundle.js'
+        'dist/js/bootstrap.bundle.js',
     ];
 
     /**
      * @inheritDoc
      */
     public $depends = [
-        'yii\bootstrap5\BootstrapAsset'
+        'yii\bootstrap5\BootstrapAsset',
     ];
 }

@@ -14,7 +14,6 @@ class HtmlTest extends TestCase
 {
     /**
      * @dataProvider \yiiunit\extensions\bootstrap5\providers\Data::staticControl
-     *
      */
     public function testStaticControl(string $value, array $options, string $expectedHtml): void
     {

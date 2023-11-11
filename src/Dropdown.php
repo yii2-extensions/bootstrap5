@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -31,7 +32,9 @@ use yii\helpers\ArrayHelper;
  *     ?>
  * </div>
  * ```
+ *
  * @see https://getbootstrap.com/docs/5.1/components/dropdowns/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
@@ -67,7 +70,6 @@ class Dropdown extends Widget
      */
     public $submenuOptions = [];
 
-
     /**
      * {@inheritDoc}
      */
@@ -79,8 +81,10 @@ class Dropdown extends Widget
 
     /**
      * Renders the widget.
-     * @return string
+     *
      * @throws InvalidConfigException
+     *
+     * @return string
      */
     public function run(): string
     {
@@ -92,11 +96,14 @@ class Dropdown extends Widget
 
     /**
      * Renders menu items.
+     *
      * @param array $items the menu items to be rendered
      * @param array $options the container HTML attributes
-     * @return string the rendering result.
+     *
      * @throws InvalidConfigException if the label option is not specified in one of the items.
      * @throws Exception
+     *
+     * @return string the rendering result.
      */
     protected function renderItems(array $items, array $options = []): string
     {

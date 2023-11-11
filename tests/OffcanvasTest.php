@@ -37,8 +37,7 @@ class OffcanvasTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testOptions(): void
     {
         Offcanvas::$counter = 0;
@@ -48,10 +47,10 @@ class OffcanvasTest extends TestCase
             [
                 'title' => 'Offcanvas title',
                 'headerOptions' => [
-                    'data-test' => 'Test'
+                    'data-test' => 'Test',
                 ],
                 'titleOptions' => [
-                    'tag' => 'h2'
+                    'tag' => 'h2',
                 ],
                 'placement' => Offcanvas::PLACEMENT_END,
                 'backdrop' => false,
@@ -86,7 +85,7 @@ class OffcanvasTest extends TestCase
             [
                 'toggleButton' => [
                     'class' => ['btn', 'btn-primary'],
-                    'label' => 'Launch demo offcanvas'
+                    'label' => 'Launch demo offcanvas',
                 ],
                 'title' => 'Offcanvas title',
             ],

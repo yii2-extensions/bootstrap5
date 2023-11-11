@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace yiiunit\extensions\bootstrap5;
 
-
 use yii\bootstrap5\Progress;
 
 /**
@@ -19,7 +18,7 @@ class ProgressTest extends TestCase
             [
                 'label' => 'Progress',
                 'percent' => 25,
-                'barOptions' => ['class' => 'bg-warning']
+                'barOptions' => ['class' => 'bg-warning'],
             ],
         );
 
@@ -37,7 +36,7 @@ class ProgressTest extends TestCase
         $out = Progress::widget(
             [
                 'bars' => [
-                    ['label' => 'Progress', 'percent' => 25]
+                    ['label' => 'Progress', 'percent' => 25],
                 ],
             ],
         );
@@ -50,8 +49,7 @@ class ProgressTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testMultiple(): void
     {
         Progress::$counter = 0;
@@ -60,7 +58,7 @@ class ProgressTest extends TestCase
                 'bars' => [
                     ['label' => '', 'percent' => 15],
                     ['label' => '', 'percent' => 30, 'options' => ['class' => ['bg-success']]],
-                    ['label' => '', 'percent' => 20, 'options' => ['class' => ['bg-info']]]
+                    ['label' => '', 'percent' => 20, 'options' => ['class' => ['bg-info']]],
                 ],
             ],
         );
@@ -90,8 +88,8 @@ class ProgressTest extends TestCase
         Progress::$counter = 0;
         $out = Progress::widget([
             'bars' => [
-                ['label' => 'Progress', 'percent' => 25]
-            ]
+                ['label' => 'Progress', 'percent' => 25],
+            ],
         ]);
 
         $expected = <<<HTML
