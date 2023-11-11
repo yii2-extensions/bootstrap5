@@ -37,7 +37,6 @@ class ToggleButtonGroupTest extends TestCase
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-
     public function testCheckboxChecked(): void
     {
         Html::$counter = 0;
@@ -78,7 +77,6 @@ class ToggleButtonGroupTest extends TestCase
         HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
-
 
     public function testRadioChecked(): void
     {

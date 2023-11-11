@@ -36,7 +36,6 @@ class AlertTest extends TestCase
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-
     public function testDismissibleAlert(): void
     {
         Alert::$counter = 0;

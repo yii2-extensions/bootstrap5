@@ -61,7 +61,6 @@ class CarouselTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-
     public function testCrossfade(): void
     {
         Carousel::$counter = 0;

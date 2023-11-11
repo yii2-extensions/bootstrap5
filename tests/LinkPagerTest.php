@@ -78,7 +78,6 @@ class LinkPagerTest extends TestCase
         $this->assertStringContainsString('<li class="page-item prev disabled"><a class="page-link foo-bar"', $output);
     }
 
-
     public function testOverrideDisabledPageElementOptions(): void
     {
         $output = LinkPager::widget(

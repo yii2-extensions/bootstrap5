@@ -49,7 +49,6 @@ class ProgressTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-
     public function testMultiple(): void
     {
         Progress::$counter = 0;

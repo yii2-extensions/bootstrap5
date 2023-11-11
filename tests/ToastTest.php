@@ -40,7 +40,6 @@ class ToastTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-
     public function testContainerOptions(): void
     {
         Toast::$counter = 0;

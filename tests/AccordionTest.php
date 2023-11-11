@@ -289,7 +289,6 @@ final class AccordionTest extends TestCase
         $this->assertStringNotContainsString('data-bs-parent="', $output);
     }
 
-
     public function testItemToggleTag(): void
     {
         $items = [

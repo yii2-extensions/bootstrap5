@@ -37,7 +37,6 @@ class OffcanvasTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-
     public function testOptions(): void
     {
         Offcanvas::$counter = 0;

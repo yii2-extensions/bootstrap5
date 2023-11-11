@@ -93,7 +93,6 @@ class NavBarTest extends TestCase
         $this->assertStringContainsString('<span class="navbar-brand">Yii Framework</span>', $out);
     }
 
-
     public function testNavAndForm(): void
     {
         NavBar::$counter = 0;

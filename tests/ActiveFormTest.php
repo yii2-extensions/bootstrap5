@@ -105,7 +105,6 @@ class ActiveFormTest extends TestCase
         $this->assertContainsWithoutLE($expected3, $out);
     }
 
-
     public function testHorizontalLayoutTemplateOverride(): void
     {
         ActiveForm::$counter = 0;

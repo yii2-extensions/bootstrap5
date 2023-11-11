@@ -40,7 +40,6 @@ class ModalTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-
     public function testContainerOptions(): void
     {
         Modal::$counter = 0;
