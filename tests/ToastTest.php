@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace yiiunit\extensions\bootstrap5;
 
-use PHPUnit\Framework\Constraint\IsType;
 use Yii;
 use yii\bootstrap5\Toast;
 use yii\web\View;
@@ -41,8 +40,7 @@ class ToastTest extends TestCase
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testContainerOptions(): void
     {
         Toast::$counter = 0;

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 /**
  * @package yii2-bootstrap5
+ *
  * @author Simon Karlen <simi.albi@gmail.com>
  */
 
@@ -41,7 +42,7 @@ class TranslationTest extends TestCase
             [
                 'body' => '<strong>Heilige Guacamole!</strong> Das ist ein deutscher Test.',
                 'options' => [
-                    'class' => ['alert-warning']
+                    'class' => ['alert-warning'],
                 ],
             ],
         );
@@ -64,8 +65,8 @@ class TranslationTest extends TestCase
             [
                 'links' => [
                     ['label' => 'Library', 'url' => '#'],
-                    ['label' => 'Data']
-                ]
+                    ['label' => 'Data'],
+                ],
             ],
         );
 

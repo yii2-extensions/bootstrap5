@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -54,6 +55,7 @@ trait BootstrapWidgetTrait
      * Initializes the widget.
      * This method will register the bootstrap asset bundle. If you override this method,
      * make sure you call the parent implementation first.
+     *
      * @throws InvalidConfigException
      */
     public function init()
@@ -86,7 +88,7 @@ trait BootstrapWidgetTrait
             'scrollspy',
             'tab',
             'toast',
-            'tooltip'
+            'tooltip',
         ];
         if (in_array($name, $jsPlugins, true)) {
             $view = $this->getView();

@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -25,6 +26,6 @@ class BootstrapAsset extends AssetBundle
      * @inheritDoc
      */
     public $css = [
-        'dist/css/bootstrap.css'
+        'dist/css/bootstrap.css',
     ];
 }

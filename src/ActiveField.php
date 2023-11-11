@@ -1,6 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -152,7 +155,7 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public $hintOptions = ['class' => ['widget' => 'form-text', 'text-muted'], 'tag' => 'div'];
     /**
-     * @var null|array CSS grid classes for horizontal layout. This must be an array with these keys:
+     * @var array|null CSS grid classes for horizontal layout. This must be an array with these keys:
      *  - 'offset' the offset grid class to append to the wrapper if no label is rendered
      *  - 'label' the label grid class
      *  - 'wrapper' the wrapper grid class
@@ -200,7 +203,6 @@ class ActiveField extends \yii\widgets\ActiveField
      * @var bool whether to render the label. Default is `true`.
      */
     public $enableLabel = true;
-
 
     /**
      * {@inheritdoc}
@@ -254,6 +256,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      * Enable option `switch` to render as toggle switch.
+     *
      * @see https://getbootstrap.com/docs/5.1/forms/checks-radios/#switches
      */
     public function checkbox($options = [], $enclosedByLabel = false)
@@ -447,12 +450,14 @@ class ActiveField extends \yii\widgets\ActiveField
 
     /**
      * Renders Bootstrap static form control.
+     *
      * @param array $options the tag options in terms of name-value pairs. These will be rendered as
      * the attributes of the resulting tag. There are also a special options:
      *
      * - encode: bool, whether value should be HTML-encoded or not.
      *
      * @return $this the field object itself
+     *
      * @see https://getbootstrap.com/docs/5.1/components/forms/#readonly-plain-text
      */
     public function staticControl(array $options = []): self
@@ -484,6 +489,7 @@ class ActiveField extends \yii\widgets\ActiveField
 
     /**
      * @param bool $value whether to render a inline list
+     *
      * @return $this the field object itself
      * Make sure you call this method before [[checkboxList()]] or [[radioList()]] to have any effect.
      */
@@ -514,6 +520,7 @@ class ActiveField extends \yii\widgets\ActiveField
      * - 'step': range step, by default, 1
      *
      * @return $this
+     *
      * @see https://getbootstrap.com/docs/5.1/forms/range/
      */
     public function rangeInput(array $options = [])
@@ -527,7 +534,9 @@ class ActiveField extends \yii\widgets\ActiveField
      * Renders a color picker (custom input).
      *
      * @param array $options the tag options in terms of name-value pairs
+     *
      * @return $this
+     *
      * @see https://getbootstrap.com/docs/5.1/forms/form-control/#color
      */
     public function colorInput(array $options = [])
@@ -540,6 +549,7 @@ class ActiveField extends \yii\widgets\ActiveField
 
     /**
      * @param array $instanceConfig the configuration passed to this instance's constructor
+     *
      * @return array the layout specific default configuration for this instance
      */
     protected function createLayoutConfig(array $instanceConfig): array

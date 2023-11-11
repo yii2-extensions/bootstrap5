@@ -24,57 +24,58 @@ final class AccordionTest extends TestCase
                         'label' => 'Collapsible Group Item #1',
                         'content' => [
                             'test content1',
-                            'test content2'
+                            'test content2',
                         ],
                     ],
                     [
                         'label' => 'Collapsible Group Item #2',
                         'content' => 'Das ist das Haus vom Nikolaus',
                         'contentOptions' => [
-                            'class' => 'testContentOptions'
+                            'class' => 'testContentOptions',
                         ],
                         'options' => [
                             'class' => 'testClass',
-                            'id' => 'testId'
+                            'id' => 'testId',
                         ],
-                        'footer' => 'Footer'
+                        'footer' => 'Footer',
                     ],
                     [
                         'label' => '<h1>Collapsible Group Item #3</h1>',
                         'content' => [
                             '<h2>test content1</h2>',
-                            '<h2>test content2</h2>'
+                            '<h2>test content2</h2>',
                         ],
                         'contentOptions' => [
-                            'class' => 'testContentOptions2'
+                            'class' => 'testContentOptions2',
                         ],
                         'options' => [
                             'class' => 'testClass2',
-                            'id' => 'testId2'
+                            'id' => 'testId2',
                         ],
                         'encode' => false,
-                        'footer' => 'Footer2'
+                        'footer' => 'Footer2',
                     ],
                     [
                         'label' => '<h1>Collapsible Group Item #4</h1>',
                         'content' => [
                             '<h2>test content1</h2>',
-                            '<h2>test content2</h2>'
+                            '<h2>test content2</h2>',
                         ],
                         'contentOptions' => [
-                            'class' => 'testContentOptions3'
+                            'class' => 'testContentOptions3',
                         ],
                         'options' => [
                             'class' => 'testClass3',
-                            'id' => 'testId3'
+                            'id' => 'testId3',
                         ],
                         'encode' => true,
-                        'footer' => 'Footer3'
+                        'footer' => 'Footer3',
                     ],
-                ]
                 ],
+            ],
         );
-        $this->assertEqualsWithoutLE(<<<HTML
+        $this->assertEqualsWithoutLE(
+            <<<HTML
             <div id="w0" class="accordion">
             <div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Collapsible Group Item #1</button>
             </h5></div>
@@ -142,7 +143,8 @@ final class AccordionTest extends TestCase
                 ],
             ],
         );
-        $this->assertEqualsWithoutLE(<<<HTML
+        $this->assertEqualsWithoutLE(
+            <<<HTML
             <div id="w0" class="accordion">
             <div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Item1</button>
             </h5></div>
@@ -192,7 +194,8 @@ final class AccordionTest extends TestCase
                 ],
             ],
         );
-        $this->assertEqualsWithoutLE(<<<HTML
+        $this->assertEqualsWithoutLE(
+            <<<HTML
             <div id="w0" class="accordion">
             <div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="false" aria-controls="w0-collapse0">Item1</button>
             </h5></div>
@@ -234,7 +237,7 @@ final class AccordionTest extends TestCase
         $form = ActiveForm::begin(['action' => '/something']);
         ActiveForm::end();
         ob_end_clean();
-        $model = new data\Singer;
+        $model = new data\Singer();
 
         Accordion::$counter = 0;
         $output = Accordion::widget(
@@ -242,13 +245,14 @@ final class AccordionTest extends TestCase
                 'items' => [
                     [
                         'label' => 'Collapsible Group Item #1',
-                        'content' => $form->field($model, 'firstName', $template)
+                        'content' => $form->field($model, 'firstName', $template),
                     ],
-                ]
+                ],
             ],
         );
 
-        $this->assertEqualsWithoutLE(<<<HTML
+        $this->assertEqualsWithoutLE(
+            <<<HTML
             <div id="w0" class="accordion">
             <div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Collapsible Group Item #1</button>
             </h5></div>
@@ -285,8 +289,7 @@ final class AccordionTest extends TestCase
         $this->assertStringNotContainsString('data-bs-parent="', $output);
     }
 
-    /**
-     */
+
     public function testItemToggleTag(): void
     {
         $items = [

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -28,7 +29,7 @@ final class TranslationBootstrap implements BootstrapInterface
         $app->getI18n()->translations['yii/bootstrap5'] = [
             'class' => GettextMessageSource::class,
             'sourceLanguage' => 'en-US',
-            'basePath' => '@yii/bootstrap5/messages'
+            'basePath' => '@yii/bootstrap5/messages',
         ];
     }
 }

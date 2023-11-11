@@ -21,13 +21,13 @@ final class Data
             [
                 'foo',
                 [],
-                '<input type="text" class="form-control-plaintext" value="foo" readonly>'
+                '<input type="text" class="form-control-plaintext" value="foo" readonly>',
             ],
             [
                 '<html>',
                 [],
-                '<input type="text" class="form-control-plaintext" value="&lt;html&gt;" readonly>'
-            ]
+                '<input type="text" class="form-control-plaintext" value="&lt;html&gt;" readonly>',
+            ],
         ];
     }
 }

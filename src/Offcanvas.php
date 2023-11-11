@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -33,25 +34,26 @@ use yii\helpers\ArrayHelper;
  * ```
  *
  * @see https://getbootstrap.com/docs/5.1/components/offcanvas/
+ *
  * @author Simon Karlen <simi.albi@outlook.com>
  */
 class Offcanvas extends Widget
 {
-    const PLACEMENT_START = 'start';
-    const PLACEMENT_END = 'end';
-    const PLACEMENT_TOP = 'top';
-    const PLACEMENT_BOTTOM = 'bottom';
+    public const PLACEMENT_START = 'start';
+    public const PLACEMENT_END = 'end';
+    public const PLACEMENT_TOP = 'top';
+    public const PLACEMENT_BOTTOM = 'bottom';
 
     /**
      * @var string Where to place the offcanvas. Can be of of the [[PLACEMENT_*]] constants.
      */
     public $placement = self::PLACEMENT_START;
     /**
-     * @var boolean Whether to enable backdrop or not. Defaults to `true`.
+     * @var bool Whether to enable backdrop or not. Defaults to `true`.
      */
     public $backdrop = true;
     /**
-     * @var boolean Whether to enable body scrolling or not. Defaults to `false`.
+     * @var bool Whether to enable body scrolling or not. Defaults to `false`.
      */
     public $scrolling = false;
     /**
@@ -89,6 +91,7 @@ class Offcanvas extends Widget
     public $toggleButton = false;
     /**
      * @var array Additional header options.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $headerOptions = [];
@@ -104,10 +107,10 @@ class Offcanvas extends Widget
     public $titleOptions = [];
     /**
      * @var array Additional body options.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $bodyOptions = [];
-
 
     /**
      * {@inheritDoc}
@@ -124,7 +127,6 @@ class Offcanvas extends Widget
         echo $this->renderBodyBegin() . "\n";
     }
 
-
     /**
      * Renders the widget.
      */
@@ -138,6 +140,7 @@ class Offcanvas extends Widget
 
     /**
      * Renders the header HTML markup of the modal
+     *
      * @return string the rendering result
      */
     protected function renderHeader(): string
@@ -163,6 +166,7 @@ class Offcanvas extends Widget
 
     /**
      * Renders the opening tag of the modal body.
+     *
      * @return string the rendering result
      */
     protected function renderBodyBegin(): string
@@ -174,6 +178,7 @@ class Offcanvas extends Widget
 
     /**
      * Renders the closing tag of the modal body.
+     *
      * @return string the rendering result
      */
     protected function renderBodyEnd(): string
@@ -183,6 +188,7 @@ class Offcanvas extends Widget
 
     /**
      * Renders the toggle button.
+     *
      * @return string|null the rendering result
      */
     protected function renderToggleButton()
@@ -192,13 +198,13 @@ class Offcanvas extends Widget
             $label = ArrayHelper::remove($toggleButton, 'label', Yii::t('yii/bootstrap5', 'Show'));
 
             return Html::tag($tag, $label, $toggleButton);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
      * Renders the close button.
+     *
      * @return string|null the rendering result
      */
     protected function renderCloseButton()
@@ -211,9 +217,8 @@ class Offcanvas extends Widget
             }
 
             return Html::tag($tag, $label, $closeButton);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -224,10 +229,10 @@ class Offcanvas extends Widget
     {
         $this->options = array_merge([
             'tabindex' => -1,
-            'data' =>[
+            'data' => [
                 'bs-backdrop' => $this->backdrop ? 'true' : 'false',
-                'bs-scroll' => $this->scrolling ? 'true' : 'false'
-            ]
+                'bs-scroll' => $this->scrolling ? 'true' : 'false',
+            ],
         ], $this->options);
         Html::addCssClass($this->options, ['widget' => 'offcanvas offcanvas-' . $this->placement]);
 
@@ -242,7 +247,7 @@ class Offcanvas extends Widget
             $this->closeButton = array_merge([
                 'class' => ['widget' => 'btn-close text-reset'],
                 'data' => ['bs-dismiss' => 'offcanvas'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')],
             ], $this->closeButton);
         }
 
@@ -250,7 +255,7 @@ class Offcanvas extends Widget
             $this->toggleButton = array_merge([
                 'data' => ['bs-toggle' => 'offcanvas'],
                 'type' => 'button',
-                'aria' => ['controls' => $this->options['id']]
+                'aria' => ['controls' => $this->options['id']],
             ], $this->toggleButton);
             if (!isset($this->toggleButton['data']['bs-target']) && !isset($this->toggleButton['href'])) {
                 $this->toggleButton['data']['bs-target'] = '#' . $this->options['id'];

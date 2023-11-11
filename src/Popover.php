@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -30,19 +31,20 @@ use yii\helpers\ArrayHelper;
  * ```
  *
  * @see https://getbootstrap.com/docs/5.1/components/popovers/
+ *
  * @author Simon Karlen <simi.albi@outlook.com>
  */
 class Popover extends Widget
 {
-    const PLACEMENT_AUTO = 'auto';
-    const PLACEMENT_TOP = 'top';
-    const PLACEMENT_BOTTOM = 'bottom';
-    const PLACEMENT_LEFT = 'left';
-    const PLACEMENT_RIGHT = 'right';
-    const TRIGGER_CLICK = 'click';
-    const TRIGGER_HOVER = 'hover';
-    const TRIGGER_FOCUS = 'focus';
-    const TRIGGER_MANUAL = 'manual';
+    public const PLACEMENT_AUTO = 'auto';
+    public const PLACEMENT_TOP = 'top';
+    public const PLACEMENT_BOTTOM = 'bottom';
+    public const PLACEMENT_LEFT = 'left';
+    public const PLACEMENT_RIGHT = 'right';
+    public const TRIGGER_CLICK = 'click';
+    public const TRIGGER_HOVER = 'hover';
+    public const TRIGGER_FOCUS = 'focus';
+    public const TRIGGER_MANUAL = 'manual';
 
     /**
      * @var string|null the tile content in the popover.
@@ -50,16 +52,19 @@ class Popover extends Widget
     public $title = null;
     /**
      * @var array additional header options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $headerOptions = [];
     /**
      * @var array body options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $bodyOptions = [];
     /**
      * @var array arrow options
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $arrowOptions = [];
@@ -83,7 +88,6 @@ class Popover extends Widget
      * for the supported HTML attributes.
      */
     public $toggleButton = false;
-
 
     /**
      * {@inheritDoc}
@@ -116,6 +120,7 @@ class Popover extends Widget
 
     /**
      * Renders the arrow HTML markup of the popover
+     *
      * @return string the rendering result
      */
     protected function renderArrow(): string
@@ -127,6 +132,7 @@ class Popover extends Widget
 
     /**
      * Renders the header HTML markup of the popover
+     *
      * @return string the rendering result
      */
     protected function renderHeader(): string
@@ -138,6 +144,7 @@ class Popover extends Widget
 
     /**
      * Renders the opening tag of the modal body.
+     *
      * @return string the rendering result
      */
     protected function renderBody(): string
@@ -149,6 +156,7 @@ class Popover extends Widget
 
     /**
      * Renders the toggle button.
+     *
      * @return string|null the rendering result
      */
     protected function renderToggleButton()
@@ -159,9 +167,8 @@ class Popover extends Widget
             $toggleButton['id'] = $this->options['id'];
 
             return Html::tag($tag, $label, $toggleButton);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -170,7 +177,6 @@ class Popover extends Widget
      */
     protected function initOptions()
     {
-
         $options = array_merge([
             'role' => 'tooltip',
         ], $this->options, ['id' => $this->options['id'] . '-popover']);
@@ -186,7 +192,7 @@ class Popover extends Widget
             'placement' => $this->placement,
             'title' => $this->title,
             'sanitize' => false,
-            'html' => true
+            'html' => true,
         ], $this->clientOptions);
 
         if ($this->toggleButton !== false) {

@@ -19,7 +19,7 @@ class BreadcrumbsTest extends TestCase
                 'homeLink' => ['label' => 'Home', 'url' => '#'],
                 'links' => [
                     ['label' => 'Library', 'url' => '#'],
-                    ['label' => 'Data']
+                    ['label' => 'Data'],
                 ],
             ],
         );
@@ -41,7 +41,7 @@ class BreadcrumbsTest extends TestCase
                 'homeLink' => false,
                 'links' => [
                     ['label' => 'Library', 'url' => '#'],
-                    ['label' => 'Data']
+                    ['label' => 'Data'],
                 ],
             ],
         );

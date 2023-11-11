@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -68,22 +69,23 @@ class ActiveForm extends \yii\widgets\ActiveForm
     /**
      * Default form layout
      */
-    const LAYOUT_DEFAULT = 'default';
+    public const LAYOUT_DEFAULT = 'default';
     /**
      * Horizontal form layout
      */
-    const LAYOUT_HORIZONTAL = 'horizontal';
+    public const LAYOUT_HORIZONTAL = 'horizontal';
     /**
      * Inline form layout
      */
-    const LAYOUT_INLINE = 'inline';
+    public const LAYOUT_INLINE = 'inline';
     /**
      * Floating labels form layout
      */
-    const LAYOUT_FLOATING = 'floating';
+    public const LAYOUT_FLOATING = 'floating';
 
     /**
      * @var string the default field class name when calling [[field()]] to create a new field.
+     *
      * @see fieldConfig
      */
     public $fieldClass = ActiveField::class;
@@ -96,6 +98,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * By choosing a layout, an appropriate default field configuration is applied. This will
      * render the form fields with slightly different markup for each layout. You can
      * override these defaults through [[fieldConfig]].
+     *
      * @see ActiveField for details on Bootstrap 5 field configuration
      */
     public $layout = self::LAYOUT_DEFAULT;
@@ -116,9 +119,9 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public $validationStateOn = self::VALIDATION_STATE_ON_INPUT;
 
-
     /**
      * {@inheritdoc}
+     *
      * @throws InvalidConfigException
      */
     public function init()
@@ -135,6 +138,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
     /**
      * {@inheritDoc}
+     *
      * @return ActiveField|\yii\widgets\ActiveField
      */
     public function field($model, $attribute, $options = []): ActiveField

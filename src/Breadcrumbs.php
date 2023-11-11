@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -8,9 +9,6 @@
 declare(strict_types=1);
 
 namespace yii\bootstrap5;
-
-use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This widget represents a Bootstrap 5 component "Breadcrumb". It displays a list of links indicating the
@@ -41,6 +39,7 @@ use yii\helpers\ArrayHelper;
  * ```
  *
  * @see https://getbootstrap.com/docs/5.1/components/breadcrumb/
+ *
  * @author Alexandr Kozhevnikov <onmotion1@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
@@ -69,6 +68,7 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
     public $activeItemTemplate = "<li class=\"breadcrumb-item active\" aria-current=\"page\">{link}</li>\n";
     /**
      * @var array the HTML attributes for the widgets nav container tag.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $navOptions = ['aria' => ['label' => 'breadcrumb']];

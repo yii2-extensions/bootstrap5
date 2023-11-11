@@ -16,7 +16,6 @@ use yiiunit\extensions\bootstrap5\data\User;
  */
 class ActiveFormTest extends TestCase
 {
-
     public function testDefaultLayout(): void
     {
         ActiveForm::$counter = 0;
@@ -50,7 +49,7 @@ class ActiveFormTest extends TestCase
         echo $form->field($model, 'gridRadios')->radioList([
             'option1' => 'First radio',
             'option2' => 'Second radio',
-            'option3' => 'Third radio'
+            'option3' => 'Third radio',
         ]);
         ActiveForm::end();
         $out = ob_get_clean();
@@ -106,8 +105,7 @@ class ActiveFormTest extends TestCase
         $this->assertContainsWithoutLE($expected3, $out);
     }
 
-    /**
-     */
+
     public function testHorizontalLayoutTemplateOverride(): void
     {
         ActiveForm::$counter = 0;
@@ -138,7 +136,7 @@ class ActiveFormTest extends TestCase
         echo $form->field($model, 'selectName')->listBox([
             '1' => 'One',
             '2' => 'Two',
-            '3' => 'Three'
+            '3' => 'Three',
         ]);
         echo $form->field($model, 'checkboxName')->checkbox();
         ActiveForm::end();
@@ -190,7 +188,7 @@ class ActiveFormTest extends TestCase
         echo $form->field($model, 'selectName')->listBox([
             '1' => 'One',
             '2' => 'Two',
-            '3' => 'Three'
+            '3' => 'Three',
         ]);
         echo $form->field($model, 'checkboxName')->checkbox();
         ActiveForm::end();
@@ -335,6 +333,7 @@ class ActiveFormTest extends TestCase
 
     /**
      * Fixes #128
+     *
      * @see https://github.com/yiisoft/yii2-bootstrap5/issues/128
      */
     public function testInputTemplate(): void
@@ -378,7 +377,7 @@ class ActiveFormTest extends TestCase
         $model->validate();
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_DEFAULT
+            'layout' => ActiveForm::LAYOUT_DEFAULT,
         ]);
         echo $form->errorSummary($model);
         ActiveForm::end();
@@ -390,7 +389,7 @@ class ActiveFormTest extends TestCase
     protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testFormNoRoleAttribute()
-        $_SERVER['REQUEST_URI'] = "index.php";
+        $_SERVER['REQUEST_URI'] = 'index.php';
 
         parent::setUp();
     }

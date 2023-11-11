@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5\data;
 
 use yii\bootstrap5\ActiveField;

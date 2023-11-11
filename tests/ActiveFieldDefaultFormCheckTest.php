@@ -120,14 +120,14 @@ class ActiveFieldDefaultFormCheckTest extends TestCase
         $model = new DynamicModel(['attributeName', 'checkbox', 'gridRadios']);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_HORIZONTAL
+            'layout' => ActiveForm::LAYOUT_HORIZONTAL,
         ]);
         echo $form->field($model, 'attributeName');
         echo $form->field($model, 'checkbox')->checkbox(['wrapperOptions' => ['class' => ['widget' => new UnsetArrayValue()]]]);
         echo $form->field($model, 'gridRadios')->radioList([
             'option1' => 'First radio',
             'option2' => 'Second radio',
-            'option3' => 'Third radio'
+            'option3' => 'Third radio',
         ]);
         ActiveForm::end();
         $out = ob_get_clean();
@@ -201,24 +201,24 @@ class ActiveFieldDefaultFormCheckTest extends TestCase
                             'checkOptions' => [
                                 'class' => ['widget' => 'form-check-input'],
                                 'labelOptions' => [
-                                    'class' => ['widget' => 'form-check-label']
+                                    'class' => ['widget' => 'form-check-label'],
                                 ],
                                 'wrapperOptions' => [
-                                    'class' => ['widget' => 'form-check']
-                                ]
+                                    'class' => ['widget' => 'form-check'],
+                                ],
                             ],
                             'radioOptions' => [
                                 'class' => ['widget' => 'form-check-input'],
                                 'labelOptions' => [
-                                    'class' => ['widget' => 'form-check-label']
+                                    'class' => ['widget' => 'form-check-label'],
                                 ],
                                 'wrapperOptions' => [
-                                    'class' => ['widget' => 'form-check']
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'class' => ['widget' => 'form-check'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -231,7 +231,7 @@ class ActiveFieldDefaultFormCheckTest extends TestCase
         $this->_activeField = Yii::createObject(
             [
                 'class' => 'yii\bootstrap5\ActiveField',
-                'form' => $this->_helperForm
+                'form' => $this->_helperForm,
             ]
         );
         $this->_activeField->model = $this->_helperModel;

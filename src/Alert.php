@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -42,6 +43,7 @@ use yii\helpers\ArrayHelper;
  * ```
  *
  * @see https://getbootstrap.com/docs/5.1/components/alerts/
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
@@ -68,7 +70,6 @@ class Alert extends Widget
      */
     public $closeButton = [];
 
-
     /**
      * {@inheritdoc}
      */
@@ -94,6 +95,7 @@ class Alert extends Widget
 
     /**
      * Renders the alert body and the close button (if any).
+     *
      * @return string the rendering result
      */
     protected function renderBodyEnd(): string
@@ -103,6 +105,7 @@ class Alert extends Widget
 
     /**
      * Renders the close button.
+     *
      * @return string|null the rendering result
      */
     protected function renderCloseButton()
@@ -115,9 +118,8 @@ class Alert extends Widget
             }
 
             return Html::tag($tag, $label, $closeButton);
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -132,7 +134,7 @@ class Alert extends Widget
             $this->closeButton = array_merge([
                 'class' => ['widget' => 'btn-close'],
                 'data' => ['bs-dismiss' => 'alert'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')],
             ], $this->closeButton);
 
             Html::addCssClass($this->options, ['toggle' => 'alert-dismissible']);

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace yiiunit\extensions\bootstrap5;
 
-use PHPUnit\Framework\Constraint\IsType;
 use Yii;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Popover;

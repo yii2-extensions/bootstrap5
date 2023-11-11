@@ -278,17 +278,16 @@ class ActiveFieldTest extends TestCase
         $content = $this->activeField->radioList(
             [
                 1 => 'name1',
-                2 => 'name2'
+                2 => 'name2',
             ],
             [
-                'itemOptions' => ['data-attribute' => 'test']
+                'itemOptions' => ['data-attribute' => 'test'],
             ],
         )->render();
         $this->assertStringContainsString('data-attribute="test"', $content);
     }
 
     /**
-     *
      * @see https://github.com/yiisoft/yii2-bootstrap/issues/81
      */
     public function testCheckboxListItemOptions(): void
@@ -296,7 +295,7 @@ class ActiveFieldTest extends TestCase
         $content = $this->activeField->checkboxList(
             [
                 1 => 'name1',
-                2 => 'name2'
+                2 => 'name2',
             ],
             [
                 'itemOptions' => ['data-attribute' => 'test']]
@@ -307,8 +306,8 @@ class ActiveFieldTest extends TestCase
     protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
-        $_SERVER['SCRIPT_FILENAME'] = "index.php";
-        $_SERVER['SCRIPT_NAME'] = "index.php";
+        $_SERVER['SCRIPT_FILENAME'] = 'index.php';
+        $_SERVER['SCRIPT_NAME'] = 'index.php';
         parent::setUp();
 
         Html::$counter = 0;

@@ -18,7 +18,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      * Asserting two strings equality ignoring line endings
-     *
      */
     public function assertEqualsWithoutLE(string $expected, string $actual): void
     {
@@ -30,7 +29,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
     /**
      * Asserting two strings equality ignoring line endings
-     *
      */
     public function assertContainsWithoutLE(string $needle, string $haystack): void
     {
@@ -64,7 +62,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             'id' => 'testapp',
             'basePath' => __DIR__,
             'vendorPath' => dirname(__DIR__) . '/vendor',
-            'language' =>  'en-US',
+            'language' => 'en-US',
             'aliases' => [
                 '@bower' => '@vendor/bower-asset',
                 '@npm' => '@vendor/npm-asset',
@@ -83,8 +81,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
                     'cookieValidationKey' => 'wefJDF8sfdsfSDefwqdxj9oq',
                     'scriptFile' => __DIR__ . '/index.php',
                     'scriptUrl' => '/index.php',
-                ]
-            ]
+                ],
+            ],
         ], $config));
     }
 
