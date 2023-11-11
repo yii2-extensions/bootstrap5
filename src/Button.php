@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @license https://www.yiiframework.com/license/
  */
 
-
 namespace yii\bootstrap5;
 
 use yii\base\InvalidConfigException;
