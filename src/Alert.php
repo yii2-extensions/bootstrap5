@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
@@ -6,12 +9,12 @@
  * @license https://www.yiiframework.com/license/
  */
 
-declare(strict_types=1);
-
 namespace yii\bootstrap5;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+
+use function array_merge;
 
 /**
  * Alert renders an alert bootstrap component.

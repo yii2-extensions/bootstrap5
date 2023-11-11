@@ -14,6 +14,10 @@ namespace yii\bootstrap5;
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 
+use function implode;
+use function in_array;
+use function ucfirst;
+
 /**
  * BootstrapWidgetTrait is the trait, which provides basic for all Bootstrap widgets features.
  *

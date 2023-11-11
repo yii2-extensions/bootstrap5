@@ -1,12 +1,13 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
-
-declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
@@ -15,6 +16,8 @@ use DateTime;
 use DateTimeInterface;
 use Yii;
 use yii\helpers\ArrayHelper;
+
+use function array_merge;
 
 /**
  * Toasts renders a toast bootstrap component.

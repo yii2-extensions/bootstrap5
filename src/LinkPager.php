@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
@@ -6,13 +9,14 @@
  * @license https://www.yiiframework.com/license/
  */
 
-declare(strict_types=1);
-
 namespace yii\bootstrap5;
 
 use yii\base\InvalidConfigException;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
+
+use function implode;
+use function max;
 
 /**
  * LinkPager represents a Bootstrap 5 version of [[\yii\widgets\LinkPager]]. It displays a list of hyperlinks

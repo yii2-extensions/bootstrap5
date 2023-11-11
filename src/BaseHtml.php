@@ -15,6 +15,8 @@ use Exception;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
+use function array_key_exists;
+
 /**
  * BaseHtml provides concrete implementation for [[Html]].
  */

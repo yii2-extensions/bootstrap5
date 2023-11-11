@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
@@ -6,11 +9,12 @@
  * @license https://www.yiiframework.com/license/
  */
 
-declare(strict_types=1);
-
 namespace yii\bootstrap5;
 
 use Throwable;
+
+use function implode;
+use function is_array;
 
 /**
  * ButtonToolbar Combines sets of button groups into button toolbars for more complex components.

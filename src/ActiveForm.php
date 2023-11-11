@@ -13,6 +13,8 @@ namespace yii\bootstrap5;
 
 use yii\base\InvalidConfigException;
 
+use function in_array;
+
 /**
  * A Bootstrap 5 enhanced version of [[\yii\widgets\ActiveForm]].
  *

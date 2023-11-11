@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
@@ -6,9 +9,12 @@
  * @license https://www.yiiframework.com/license/
  */
 
-declare(strict_types=1);
-
 namespace yii\bootstrap5;
+
+use function is_array;
+use function is_string;
+use function ob_get_clean;
+use function ob_start;
 
 /**
  * This widget represents a Bootstrap 5 component "Breadcrumb."
