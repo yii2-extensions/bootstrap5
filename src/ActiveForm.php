@@ -139,7 +139,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
     /**
      * {@inheritDoc}
      *
-     * @return ActiveField|\yii\widgets\ActiveField
+     * @return ActiveField
      */
     public function field($model, $attribute, $options = []): ActiveField
     {

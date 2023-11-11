@@ -217,6 +217,8 @@ class NavBar extends Widget
             return '';
         }
 
+        $aria = '';
+        $bsData = [];
         $options = $this->togglerOptions;
         Html::addCssClass($options, ['widget' => 'navbar-toggler']);
         if ($this->offcanvasOptions !== false) {

@@ -203,6 +203,10 @@ class ActiveField extends \yii\widgets\ActiveField
      * @var bool whether to render the label. Default is `true`.
      */
     public $enableLabel = true;
+    /**
+     * @var ActiveForm the form that this field is associated with.
+     */
+    public $form;
 
     /**
      * {@inheritdoc}
