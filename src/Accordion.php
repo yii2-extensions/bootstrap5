@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
@@ -6,13 +9,21 @@
  * @license https://www.yiiframework.com/license/
  */
 
-declare(strict_types=1);
-
 namespace yii\bootstrap5;
 
 use Exception;
+use Throwable;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
+
+use function array_key_exists;
+use function array_merge;
+use function implode;
+use function in_array;
+use function is_int;
+use function is_numeric;
+use function is_object;
+use function is_string;
 
 /**
  * Accordion renders an accordion bootstrap javascript component.
@@ -60,19 +71,19 @@ use yii\helpers\ArrayHelper;
 class Accordion extends Widget
 {
     /**
-     * @var array list of groups in the collapse widget. Each array element represents a single
-     * group with the following structure:
+     * @var array list of groups in the collapse widget. Each array element represents a single group with the following
+     * structure:
      *
      * - label: string, required, the group header label.
      * - encode: bool, optional, whether this label should be HTML-encoded. This param will override
      *   global `$this->encodeLabels` param.
-     * - content: array|string|object, required, the content (HTML) of the group
-     * - options: array, optional, the HTML attributes of the group
-     * - contentOptions: optional, the HTML attributes of the group's content
+     * - content: array|string|object, required, the content (HTML) of the group.
+     * - options: array, optional, the HTML attributes of the group.
+     * - contentOptions: optional, the HTML attributes of the group's content.
      *
-     * Since version 2.0.7 you may also specify this property as key-value pairs, where the key refers to the
-     * `label` and the value refers to `content`. If value is a string it is interpreted as label. If it is
-     * an array, it is interpreted as explained above.
+     * You may also specify this property as key-value pairs, where the key refers to the `label` and the value refers
+     * to `content`. If value is a string, it is interpreted as label. If it is an array, it is interpreted as explained
+     * above.
      *
      * For example:
      *
@@ -91,18 +102,19 @@ class Accordion extends Widget
      * ])
      * ```
      */
-    public $items = [];
+    public array $items = [];
     /**
      * @var bool whether the labels for header items should be HTML-encoded.
      */
-    public $encodeLabels = true;
+    public bool $encodeLabels = true;
     /**
-     * @var bool whether to close other items if an item is opened. Defaults to `true` which causes an
-     * accordion effect. Set this to `false` to allow keeping multiple items open at once.
+     * @var bool whether to close other items if an item is opened. Defaults to `true` which causes an accordion effect.
+     * Set this to `false` to allow keeping multiple items open at once.
      */
-    public $autoCloseItems = true;
+    public bool $autoCloseItems = true;
     /**
      * @var array the HTML options for the item toggle tag. Key 'tag' might be used here for the tag name specification.
+     *
      * For example:
      *
      * ```php
@@ -112,12 +124,11 @@ class Accordion extends Widget
      * ]
      * ```
      */
-    public $itemToggleOptions = [];
+    public array $itemToggleOptions = [];
 
     /**
      * @throws InvalidConfigException
-     *
-     * @return string
+     * @throws Throwable
      */
     public function run(): string
     {
@@ -134,15 +145,22 @@ class Accordion extends Widget
     /**
      * Renders collapsible items as specified on [[items]].
      *
-     * @throws InvalidConfigException if label isn't specified
+     * @return string the rendering result.
      *
-     * @return string the rendering result
+     * @throws InvalidConfigException if label isn't specified.
+     * @throws Exception
+     * @throws Throwable
      */
     public function renderItems(): string
     {
         $items = [];
         $index = 0;
-        $expanded = array_search(true, ArrayHelper::getColumn(ArrayHelper::toArray($this->items), 'expand', true));
+        $expanded = in_array(
+            true,
+            ArrayHelper::getColumn(ArrayHelper::toArray($this->items), 'expand'),
+            true,
+        );
+
         foreach ($this->items as $key => $item) {
             if (!is_array($item)) {
                 $item = ['content' => $item];
@@ -169,14 +187,15 @@ class Accordion extends Widget
     /**
      * Renders a single collapsible item group
      *
-     * @param string $header a label of the item group [[items]]
-     * @param array $item a single item from [[items]]
-     * @param int $index the item index as each item group content must have an id
+     * @param string $header a label of the item group [[items]].
+     * @param array $item a single item from [[items]].
+     * @param int $index the item index as each item group content must have an id.
      *
-     * @throws InvalidConfigException
+     * @return string the rendering result.
+     *
      * @throws Exception
-     *
-     * @return string the rendering result
+     * @throws Throwable
+     * @throws InvalidConfigException
      */
     public function renderItem(string $header, array $item, int $index): string
     {
@@ -187,7 +206,7 @@ class Accordion extends Widget
             $options['id'] = $id;
             Html::addCssClass($options, ['widget' => 'collapse']);
 
-            // check if accordion expanded, if true add show class
+            // check if accordion expanded, of true add show class
             if ($expand) {
                 Html::addCssClass($options, ['visibility' => 'show']);
             }

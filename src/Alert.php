@@ -54,7 +54,7 @@ class Alert extends Widget
      * the [[begin()]] and [[end()]] calls of the Alert widget will also be treated
      * as the body content, and will be rendered before this.
      */
-    public $body;
+    public string $body;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the modal window. Clicking
@@ -62,18 +62,18 @@ class Alert extends Widget
      *
      * The following special options are supported:
      *
-     * - tag: string, the tag name of the button. Defaults to 'button'.
+     * - tag: string, the tag name of the button. Defaults to 'button.'
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
      * Please refer to the [Alert documentation](https://getbootstrap.com/docs/5.1/components/alerts/)
      * for the supported HTML attributes.
      */
-    public $closeButton = [];
+    public array|false $closeButton = [];
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -85,7 +85,7 @@ class Alert extends Widget
     /**
      * {@inheritdoc}
      */
-    public function run()
+    public function run(): void
     {
         echo "\n" . $this->renderBodyEnd();
         echo "\n" . Html::endTag('div');
@@ -108,7 +108,7 @@ class Alert extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): string|null
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
@@ -126,7 +126,7 @@ class Alert extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
         Html::addCssClass($this->options, ['widget' => 'alert']);
 

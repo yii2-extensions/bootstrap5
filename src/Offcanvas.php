@@ -47,19 +47,19 @@ class Offcanvas extends Widget
     /**
      * @var string Where to place the offcanvas. Can be of of the [[PLACEMENT_*]] constants.
      */
-    public $placement = self::PLACEMENT_START;
+    public string $placement = self::PLACEMENT_START;
     /**
      * @var bool Whether to enable backdrop or not. Defaults to `true`.
      */
-    public $backdrop = true;
+    public bool $backdrop = true;
     /**
      * @var bool Whether to enable body scrolling or not. Defaults to `false`.
      */
-    public $scrolling = false;
+    public bool $scrolling = false;
     /**
      * @var string The title content in the offcanvas container.
      */
-    public $title;
+    public string $title;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the offcanvas container. Clicking
@@ -67,13 +67,13 @@ class Offcanvas extends Widget
      *
      * The following special options are supported:
      *
-     * - tag: string, the tag name of the button. Defaults to 'button'.
+     * - tag: string, the tag name of the button. Defaults to 'button.'
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
      * Please refer to the [Offcanvas plugin help](https://getbootstrap.com/docs/5.1/components/offcanvas/)
      * for the supported HTML attributes.
      */
-    public $closeButton = [];
+    public array|false $closeButton = [];
     /**
      * @var array|false the options for rendering the toggle button tag.
      * The toggle button is used to toggle the visibility of the modal window.
@@ -82,40 +82,40 @@ class Offcanvas extends Widget
      * The following special options are supported:
      *
      * - tag: string, the tag name of the button. Defaults to 'button'.
-     * - label: string, the label of the button. Defaults to 'Show'.
+     * - label: string, the label of the button. Defaults to 'Show.'
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
      * Please refer to the [Modal plugin help](https://getbootstrap.com/javascript/#modals)
      * for the supported HTML attributes.
      */
-    public $toggleButton = false;
+    public array|false $toggleButton = false;
     /**
      * @var array Additional header options.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $headerOptions = [];
+    public array $headerOptions = [];
     /**
      * @var array Additional title options.
      *
      * The following special options are supported:
      *
-     * - tag: string, the tag name of the button. Defaults to 'h5'.
+     * - tag: string, the tag name of the button. Defaults to 'h5.'
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $titleOptions = [];
+    public array $titleOptions = [];
     /**
      * @var array Additional body options.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $bodyOptions = [];
+    public array $bodyOptions = [];
 
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -130,7 +130,7 @@ class Offcanvas extends Widget
     /**
      * Renders the widget.
      */
-    public function run()
+    public function run(): void
     {
         echo "\n" . $this->renderBodyEnd();
         echo "\n" . Html::endTag('div');
@@ -191,7 +191,7 @@ class Offcanvas extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderToggleButton()
+    protected function renderToggleButton(): string|null
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
@@ -207,7 +207,7 @@ class Offcanvas extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): string|null
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
@@ -225,7 +225,7 @@ class Offcanvas extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
         $this->options = array_merge([
             'tabindex' => -1,

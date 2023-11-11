@@ -41,7 +41,7 @@ use yii\helpers\Url;
 class ButtonDropdown extends Widget
 {
     /**
-     * The css class part of dropdown
+     * The css class part of the dropdown
      */
     public const DIRECTION_DOWN = 'down';
     /**
@@ -60,57 +60,49 @@ class ButtonDropdown extends Widget
     /**
      * @var string|null the button label
      */
-    public $label = null;
-    /**
-     * @var array the HTML attributes for the container tag. The following special options are recognized:
-     *
-     * - tag: string, defaults to "div", the name of the container tag.
-     *
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     */
-    public $options = [];
+    public string|null $label = null;
     /**
      * @var array the HTML attributes of the button.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $buttonOptions = [];
+    public array $buttonOptions = [];
     /**
      * @var array the configuration array for [[Dropdown]].
      */
-    public $dropdown = [];
+    public array $dropdown = [];
     /**
      * @var string the drop-direction of the widget
      *
-     * Possible values are 'left', 'right', 'up', or 'down' (default)
+     * Possible values are 'left,' 'right,' 'up', or 'down' (default)
      */
-    public $direction = self::DIRECTION_DOWN;
+    public string $direction = self::DIRECTION_DOWN;
     /**
-     * @var bool whether to display a group of split-styled button group.
+     * @var bool whether to display a group of split-styled button groups.
      */
-    public $split = false;
+    public bool $split = false;
     /**
      * @var string the tag to use to render the button
      */
-    public $tagName = 'button';
+    public string $tagName = 'button';
     /**
      * @var bool whether the label should be HTML-encoded.
      */
-    public $encodeLabel = true;
+    public bool $encodeLabel = true;
     /**
      * @var string name of a class to use for rendering dropdowns withing this widget. Defaults to [[Dropdown]].
      */
-    public $dropdownClass = Dropdown::class;
+    public string $dropdownClass = Dropdown::class;
     /**
      * @var bool whether to render the container using the [[options]] as HTML attributes. If set to `false`,
      * the container element enclosing the button and dropdown will NOT be rendered.
      */
-    public $renderContainer = true;
+    public bool $renderContainer = true;
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -140,7 +132,7 @@ class ButtonDropdown extends Widget
             $html = Html::tag($tag, $html, $options);
         }
 
-        // Set options id to button options id to ensure correct css selector in plugin initialisation
+        // Set options id to button options id to ensure the correct css selector in plugin initialisation
         $this->options['id'] = $this->buttonOptions['id'];
 
         $this->registerPlugin('dropdown');
@@ -163,8 +155,9 @@ class ButtonDropdown extends Widget
             $label = Html::encode($label);
         }
 
+        $buttonOptions = $this->buttonOptions;
+
         if ($this->split) {
-            $buttonOptions = $this->buttonOptions;
             $this->buttonOptions['data'] = ['bs-toggle' => 'dropdown'];
             $this->buttonOptions['aria'] = ['expanded' => 'false'];
             Html::addCssClass($this->buttonOptions, ['toggle' => 'dropdown-toggle dropdown-toggle-split']);
@@ -176,7 +169,6 @@ class ButtonDropdown extends Widget
                 'view' => $this->getView(),
             ]);
         } else {
-            $buttonOptions = $this->buttonOptions;
             Html::addCssClass($buttonOptions, ['toggle' => 'dropdown-toggle']);
             $buttonOptions['data'] = ['bs-toggle' => 'dropdown'];
             $buttonOptions['aria'] = ['expanded' => 'false'];
@@ -187,11 +179,9 @@ class ButtonDropdown extends Widget
             if (is_array($buttonOptions['href'])) {
                 $buttonOptions['href'] = Url::to($buttonOptions['href']);
             }
-        } else {
-            if ($this->tagName === 'a') {
-                $buttonOptions['href'] = '#';
-                $buttonOptions['role'] = 'button';
-            }
+        } else if ($this->tagName === 'a') {
+            $buttonOptions['href'] = '#';
+            $buttonOptions['role'] = 'button';
         }
 
         return Button::widget([

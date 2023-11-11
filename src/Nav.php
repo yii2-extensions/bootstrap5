@@ -59,7 +59,7 @@ class Nav extends Widget
 {
     /**
      * @var array list of items in the nav widget. Each array element represents a single
-     * menu item which can be either a string or an array with the following structure:
+     * menu item, which can be either a string or an array with the following structure:
      *
      * - label: string, required, the nav item label.
      * - url: optional, the item's URL. Defaults to "#".
@@ -68,29 +68,29 @@ class Nav extends Widget
      * - linkOptions: array, optional, the HTML attributes of the item's link.
      * - options: array, optional, the HTML attributes of the item container (LI).
      * - active: bool, optional, whether the item should be on active state or not.
-     * - dropdownOptions: array, optional, the HTML options that will passed to the [[Dropdown]] widget.
+     * - dropdownOptions: array, optional, the HTML options that will be passed to the [[Dropdown]] widget.
      * - items: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
      *   or a string representing the dropdown menu. Note that Bootstrap does not support sub-dropdown menus.
      * - encode: bool, optional, whether the label will be HTML-encoded. If set, supersedes the $encodeLabels option for only this item.
      *
      * If a menu item is a string, it will be rendered directly without HTML encoding.
      */
-    public $items = [];
+    public array $items = [];
     /**
      * @var bool whether the nav items labels should be HTML-encoded.
      */
-    public $encodeLabels = true;
+    public bool $encodeLabels = true;
     /**
      * @var bool whether to automatically activate items according to whether their route setting
      * matches the currently requested route.
      *
      * @see isItemActive
      */
-    public $activateItems = true;
+    public bool $activateItems = true;
     /**
      * @var bool whether to activate parent menu items when one of the corresponding child menu items is active.
      */
-    public $activateParents = false;
+    public bool $activateParents = false;
     /**
      * @var string|null the route used to determine if a menu item is active or not.
      * If not set, it will use the route of the current request.
@@ -98,7 +98,7 @@ class Nav extends Widget
      * @see params
      * @see isItemActive
      */
-    public $route = null;
+    public string|null $route = null;
     /**
      * @var array|null the parameters used to determine if a menu item is active or not.
      * If not set, it will use `$_GET`.
@@ -106,16 +106,16 @@ class Nav extends Widget
      * @see route
      * @see isItemActive
      */
-    public $params = null;
+    public ?array $params = null;
     /**
      * @var string name of a class to use for rendering dropdowns within this widget. Defaults to [[Dropdown]].
      */
-    public $dropdownClass = Dropdown::class;
+    public string $dropdownClass = Dropdown::class;
 
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         if ($this->route === null && Yii::$app->controller !== null) {
@@ -241,7 +241,7 @@ class Nav extends Widget
     }
 
     /**
-     * Check to see if a child item is active optionally activating the parent.
+     * Check to see if a child item is actively optionally activating the parent.
      *
      * @param array $items @see items
      * @param bool $active should the parent be active too
@@ -282,7 +282,7 @@ class Nav extends Widget
      * Checks whether a menu item is active.
      * This is done by checking if [[route]] and [[params]] match that specified in the `url` option of the menu item.
      * When the `url` option of a menu item is specified in terms of an array, its first element is treated
-     * as the route for the item and the rest of the elements are the associated parameters.
+     * as the route for the item, and the rest of the elements are the associated parameters.
      * Only when its route and parameters match [[route]] and [[params]], respectively, will a menu item
      * be considered active.
      *
@@ -300,7 +300,7 @@ class Nav extends Widget
         if (isset($item['active'])) {
             return (bool)ArrayHelper::getValue($item, 'active', false);
         }
-        if (isset($item['url']) && is_array($item['url']) && isset($item['url'][0])) {
+        if (isset($item['url'][0]) && is_array($item['url'])) {
             $route = $item['url'][0];
             if ($route[0] !== '/' && Yii::$app->controller) {
                 $route = Yii::$app->controller->module->getUniqueId() . '/' . $route;
@@ -313,7 +313,7 @@ class Nav extends Widget
                 $params = $item['url'];
                 unset($params[0]);
                 foreach ($params as $name => $value) {
-                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
+                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] !== $value)) {
                         return false;
                     }
                 }

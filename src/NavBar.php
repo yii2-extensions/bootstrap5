@@ -45,93 +45,81 @@ use yii\helpers\ArrayHelper;
 class NavBar extends Widget
 {
     /**
-     * @var array the HTML attributes for the widget container tag. The following special options are recognized:
-     *
-     * - tag: string, defaults to "nav", the name of the container tag.
-     *
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     */
-    public $options = [];
-    /**
      * @var array|bool the HTML attributes for the collapse container tag. The following special options are recognized:
      *
-     * - tag: string, defaults to "div", the name of the container tag.
+     * - tag: string, defaults to "div," the name of the container tag.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $collapseOptions = [];
+    public array|bool $collapseOptions = [];
     /**
      * @var array|bool the HTML attributes for the offcanvas container tag.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $offcanvasOptions = false;
+    public array|bool $offcanvasOptions = false;
     /**
      * @var bool|string the text of the brand or false if it's not used. Note that this is not HTML-encoded.
      *
      * @see https://getbootstrap.com/docs/5.1/components/navbar/
      */
-    public $brandLabel = false;
+    public string|bool $brandLabel = false;
     /**
      * @var bool|string src of the brand image or false if it's not used. Note that this param will override `$this->brandLabel` param.
      *
      * @see https://getbootstrap.com/docs/5.1/components/navbar/
      */
-    public $brandImage = false;
+    public string|bool $brandImage = false;
 
     /**
      * @var array the HTML attributes of the brand image.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $brandImageOptions = [];
+    public array $brandImageOptions = [];
     /**
      * @var array|bool|string $url the URL for the brand's hyperlink tag. This parameter will be processed by [[\yii\helpers\Url::to()]]
      * and will be used for the "href" attribute of the brand link. Default value is false that means
      * [[\yii\web\Application::homeUrl]] will be used.
      * You may set it to `null` if you want to have no link at all.
      */
-    public $brandUrl = false;
+    public string|array|bool|null $brandUrl = false;
     /**
      * @var array the HTML attributes of the brand link.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $brandOptions = [];
+    public array $brandOptions = [];
     /**
      * @var string text to show for screen readers for the button to toggle the navbar.
      */
-    public $screenReaderToggleText;
+    public string $screenReaderToggleText = '';
     /**
-     * @var string the toggle button content. Defaults to bootstrap 5 default `<span class="navbar-toggler-icon"></span>`
+     * @var string the toggle button content. Defaults to bootstrap5 default `<span class="navbar-toggler-icon"></span>`
      */
-    public $togglerContent = '<span class="navbar-toggler-icon"></span>';
+    public string $togglerContent = '<span class="navbar-toggler-icon"></span>';
     /**
      * @var array the HTML attributes of the navbar toggler button.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $togglerOptions = [];
+    public array $togglerOptions = [];
     /**
      * @var bool whether the navbar content should be included in an inner div container which by default
      * adds left and right padding. Set this to false for a 100% width navbar.
      */
-    public $renderInnerContainer = true;
+    public bool $renderInnerContainer = true;
     /**
      * @var array the HTML attributes of the inner container.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $innerContainerOptions = [];
-    /**
-     * {@inheritdoc}
-     */
-    public $clientOptions = [];
+    public array $innerContainerOptions = [];
 
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         if (!isset($this->options['class']) || empty($this->options['class'])) {
@@ -190,7 +178,7 @@ class NavBar extends Widget
     /**
      * Renders the widget.
      */
-    public function run()
+    public function run(): void
     {
         if ($this->collapseOptions !== false) {
             $tag = ArrayHelper::remove($this->collapseOptions, 'tag', 'div');

@@ -59,39 +59,39 @@ class Modal extends Widget
     /**
      * @var string the title content in the modal window.
      */
-    public $title;
+    public string $title;
     /**
      * @var array additional title options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $titleOptions = [];
+    public array $titleOptions = [];
     /**
      * @var array additional header options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $headerOptions = [];
+    public array $headerOptions = [];
     /**
      * @var array body options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $bodyOptions = [];
+    public array $bodyOptions = [];
     /**
      * @var string|null the footer content in the modal window.
      */
-    public $footer;
+    public string|null $footer = null;
     /**
      * @var array additional footer options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $footerOptions = [];
+    public array $footerOptions = [];
     /**
      * @var string|null the modal size. Can be [[SIZE_LARGE]] or [[SIZE_SMALL]], or empty for default.
      */
-    public $size;
+    public string|null $size = null;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the modal window. Clicking
@@ -99,13 +99,13 @@ class Modal extends Widget
      *
      * The following special options are supported:
      *
-     * - tag: string, the tag name of the button. Defaults to 'button'.
+     * - tag: string, the tag name of the button. Defaults to 'button.'
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
      * Please refer to the [Modal plugin help](https://getbootstrap.com/javascript/#modals)
      * for the supported HTML attributes.
      */
-    public $closeButton = [];
+    public array|false $closeButton = [];
     /**
      * @var array|false the options for rendering the toggle button tag.
      * The toggle button is used to toggle the visibility of the modal window.
@@ -114,38 +114,38 @@ class Modal extends Widget
      * The following special options are supported:
      *
      * - tag: string, the tag name of the button. Defaults to 'button'.
-     * - label: string, the label of the button. Defaults to 'Show'.
+     * - label: string, the label of the button. Defaults to 'Show.'
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
      * Please refer to the [Modal plugin help](https://getbootstrap.com/javascript/#modals)
      * for the supported HTML attributes.
      */
-    public $toggleButton = false;
+    public array|false $toggleButton = false;
     /**
      * @var bool whether to center the modal vertically
      *
-     * When true the modal-dialog-centered class will be added to the modal-dialog
+     * When true, the modal-dialog-centered class will be added to the modal-dialog
      */
-    public $centerVertical = false;
+    public bool $centerVertical = false;
     /**
      * @var bool whether to make the modal body scrollable
      *
-     * When true the modal-dialog-scrollable class will be added to the modal-dialog
+     * When true, the modal-dialog-scrollable class will be added to the modal-dialog
      */
-    public $scrollable = false;
+    public bool $scrollable = false;
     /**
      * @var array modal dialog options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $dialogOptions = [];
+    public array $dialogOptions = [];
 
     /**
      * {@inheritDoc}
      *
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -162,7 +162,7 @@ class Modal extends Widget
     /**
      * Renders the widget.
      */
-    public function run()
+    public function run(): void
     {
         echo "\n" . $this->renderBodyEnd();
         echo "\n" . $this->renderFooter();
@@ -225,7 +225,7 @@ class Modal extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderFooter()
+    protected function renderFooter(): string|null
     {
         if (isset($this->footer)) {
             Html::addCssClass($this->footerOptions, ['widget' => 'modal-footer']);
@@ -240,7 +240,7 @@ class Modal extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderToggleButton()
+    protected function renderToggleButton(): string|null
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
@@ -256,7 +256,7 @@ class Modal extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): string|null
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
@@ -274,7 +274,7 @@ class Modal extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
         $this->options = array_merge([
             'tabindex' => -1,

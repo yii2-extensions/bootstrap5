@@ -17,7 +17,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * Toasts renders an toast bootstrap component.
+ * Toasts renders a toast bootstrap component.
  *
  * For example,
  *
@@ -54,17 +54,17 @@ class Toast extends Widget
      * the [[begin()]] and [[end()]] calls of the Toast widget will also be treated
      * as the body content, and will be rendered before this.
      */
-    public $body = null;
+    public ?string $body = null;
     /**
      * @var string|null The title content in the toast.
      */
-    public $title = null;
+    public ?string $title = null;
     /**
      * @var DateInterval|DateTime|DateTimeInterface|false|int|string The date time the toast message references to.
-     * This will be formatted as relative time (via formatter component). It will be omitted if
-     * set to `false` (default).
+     * This will be formatted as relative time (via a formatter component).
+     * It will be omitted if set to `false` (default).
      */
-    public $dateTime = false;
+    public string|int|false|DateTime|DateTimeInterface|DateInterval $dateTime = false;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the toast. Clicking on the button will hide the toast.
@@ -78,44 +78,44 @@ class Toast extends Widget
      * Please refer to the [Toast documentation](https://getbootstrap.com/docs/5.1/components/toasts/)
      * for the supported HTML attributes.
      */
-    public $closeButton = [];
+    public array|false $closeButton = [];
     /**
      * @var array additional title options
      *
      * The following special options are supported:
      *
-     * - tag: string, the tag name of the button. Defaults to 'strong'.
+     * - tag: string, the tag name of the button. Defaults to 'strong.'
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $titleOptions = [];
+    public array $titleOptions = [];
     /**
      * @var array additional date time part options
      *
      * The following special options are supported:
      *
-     * - tag: string, the tag name of the button. Defaults to 'small'.
+     * - tag: string, the tag name of the button. Defaults to 'small.'
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $dateTimeOptions = [];
+    public array $dateTimeOptions = [];
     /**
      * @var array additional header options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $headerOptions = [];
+    public array $headerOptions = [];
     /**
      * @var array body options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $bodyOptions = [];
+    public array $bodyOptions = [];
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -129,7 +129,7 @@ class Toast extends Widget
     /**
      * {@inheritdoc}
      */
-    public function run()
+    public function run(): void
     {
         echo "\n" . $this->renderBodyEnd();
         echo "\n" . Html::endTag('div');
@@ -147,7 +147,7 @@ class Toast extends Widget
         $button = $this->renderCloseButton();
         $tag = ArrayHelper::remove($this->titleOptions, 'tag', 'strong');
         Html::addCssClass($this->titleOptions, ['widget' => 'me-auto']);
-        $title = Html::tag($tag, $this->title === null ? '' : $this->title, $this->titleOptions);
+        $title = Html::tag($tag, $this->title ?? '', $this->titleOptions);
 
         if ($this->dateTime !== false) {
             $tag = ArrayHelper::remove($this->dateTimeOptions, 'tag', 'small');
@@ -189,7 +189,7 @@ class Toast extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): string|null
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
@@ -207,7 +207,7 @@ class Toast extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
         Html::addCssClass($this->options, ['widget' => 'toast']);
 

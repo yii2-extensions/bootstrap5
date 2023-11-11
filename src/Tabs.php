@@ -90,63 +90,63 @@ class Tabs extends Widget
      *     * content: string, required if `items` is not set. The content (HTML) of the tab pane.
      *     * options: optional, array, the HTML attributes of the tab content container.
      */
-    public $items = [];
+    public array $items = [];
     /**
      * @var array list of HTML attributes for the item container tags. This will be overwritten
      * by the "options" set in individual [[items]]. The following special options are recognized:
      *
-     * - tag: string, defaults to "div", the tag name of the item container tags.
+     * - tag: string, defaults to "div," the tag name of the item container tags.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $itemOptions = [];
+    public array $itemOptions = [];
     /**
      * @var array list of HTML attributes for the header container tags. This will be overwritten
      * by the "headerOptions" set in individual [[items]].
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $headerOptions = [];
+    public array $headerOptions = [];
     /**
      * @var array list of HTML attributes for the tab header link tags. This will be overwritten
      * by the "linkOptions" set in individual [[items]].
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $linkOptions = [];
+    public array $linkOptions = [];
     /**
      * @var bool whether the labels for header items should be HTML-encoded.
      */
-    public $encodeLabels = true;
+    public bool $encodeLabels = true;
     /**
      * @var string specifies the Bootstrap tab styling.
      */
-    public $navType = 'nav-tabs';
+    public string $navType = 'nav-tabs';
     /**
      * @var bool whether to render the `tab-content` container and its content. You may set this property
      * to be false so that you can manually render `tab-content` yourself in case your tab contents are complex.
      */
-    public $renderTabContent = true;
+    public bool $renderTabContent = true;
     /**
      * @var array list of HTML attributes for the `tab-content` container. This will always contain the CSS class `tab-content`.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $tabContentOptions = [];
+    public array $tabContentOptions = [];
     /**
      * @var string name of a class to use for rendering dropdowns withing this widget. Defaults to [[Dropdown]].
      */
-    public $dropdownClass = Dropdown::class;
+    public string $dropdownClass = Dropdown::class;
 
     /**
      * @var array Tab panes (contents)
      */
-    protected $panes = [];
+    protected array $panes = [];
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'nav', $this->navType]);
@@ -181,7 +181,9 @@ class Tabs extends Widget
      */
     public function renderPanes(array $panes): string
     {
-        return $this->renderTabContent ? "\n" . Html::tag('div', implode("\n", $panes), $this->tabContentOptions) : '';
+        return $this->renderTabContent
+            ? "\n" . Html::tag('div', implode("\n", $panes), $this->tabContentOptions)
+            : '';
     }
 
     /**
@@ -193,7 +195,7 @@ class Tabs extends Widget
      * @throws InvalidConfigException
      * @throws Exception
      */
-    protected function prepareItems(array &$items, string $prefix = '')
+    protected function prepareItems(array &$items, string $prefix = ''): void
     {
         if (!$this->hasActiveTab()) {
             $this->activateFirstVisibleTab();
@@ -268,10 +270,10 @@ class Tabs extends Widget
      *
      * @throws Exception
      */
-    protected function activateFirstVisibleTab()
+    protected function activateFirstVisibleTab(): void
     {
         foreach ($this->items as $i => $item) {
-            $active = ArrayHelper::getValue($item, 'active', null);
+            $active = ArrayHelper::getValue($item, 'active');
             $visible = ArrayHelper::getValue($item, 'visible', true);
             $disabled = ArrayHelper::getValue($item, 'disabled', false);
             if ($visible && $active !== false && $disabled !== true) {

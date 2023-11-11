@@ -49,30 +49,30 @@ class Popover extends Widget
     /**
      * @var string|null the tile content in the popover.
      */
-    public $title = null;
+    public string|null $title = null;
     /**
      * @var array additional header options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $headerOptions = [];
+    public array $headerOptions = [];
     /**
      * @var array body options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $bodyOptions = [];
+    public array $bodyOptions = [];
     /**
      * @var array arrow options
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $arrowOptions = [];
+    public array $arrowOptions = [];
     /**
      * @var string How to position the popover - [[PLACEMENT_AUTO]] | [[PLACEMENT_TOP]] | [[PLACEMENT_BOTTOM]] |
      * [[PLACEMENT_LEFT]] | [[PLACEMENT_RIGHT]]. When auto is specified, it will dynamically reorient the popover.
      */
-    public $placement = self::PLACEMENT_AUTO;
+    public string $placement = self::PLACEMENT_AUTO;
     /**
      * @var array|false the options for rendering the toggle button tag.
      * The toggle button is used to toggle the visibility of the popover.
@@ -81,18 +81,18 @@ class Popover extends Widget
      * The following special options are supported:
      *
      * - tag: string, the tag name of the button. Defaults to 'button'.
-     * - label: string, the label of the button. Defaults to 'Show'.
+     * - label: string, the label of the button. Defaults to 'Show.'
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
      * Please refer to the [Popover plugin help](https://getbootstrap.com/docs/5.1/components/popovers/)
      * for the supported HTML attributes.
      */
-    public $toggleButton = false;
+    public array|false $toggleButton = false;
 
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -159,7 +159,7 @@ class Popover extends Widget
      *
      * @return string|null the rendering result
      */
-    protected function renderToggleButton()
+    protected function renderToggleButton(): string|null
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
@@ -175,7 +175,7 @@ class Popover extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
         $options = array_merge([
             'role' => 'tooltip',

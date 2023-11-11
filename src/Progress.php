@@ -89,17 +89,17 @@ class Progress extends Widget
     /**
      * @var string the button label. This property will only be considered if [[bars]] is empty
      */
-    public $label;
+    public string $label = '';
     /**
      * @var int the amount of progress as a percentage. This property will only be considered if [[bars]] is empty
      */
-    public $percent = 0;
+    public int $percent = 0;
     /**
      * @var array the HTML attributes of the bar. This property will only be considered if [[bars]] is empty
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $barOptions = [];
+    public array $barOptions = [];
     /**
      * @var array a set of bars that are stacked together to form a single progress bar.
      * Each bar is an array of the following structure:
@@ -115,12 +115,12 @@ class Progress extends Widget
      * ]
      * ```
      */
-    public $bars;
+    public array $bars;
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -190,7 +190,7 @@ class Progress extends Widget
             ],
         ]);
         Html::addCssClass($options, ['widget' => 'progress-bar']);
-        Html::addCssStyle($options, ['width' => $percent . '%'], true);
+        Html::addCssStyle($options, ['width' => $percent . '%']);
 
         return Html::tag('div', $label, $options);
     }

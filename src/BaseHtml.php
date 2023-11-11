@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
@@ -6,10 +9,9 @@
  * @license https://www.yiiframework.com/license/
  */
 
-declare(strict_types=1);
-
 namespace yii\bootstrap5;
 
+use Exception;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 
@@ -23,13 +25,13 @@ abstract class BaseHtml extends \yii\helpers\Html
      *
      * @internal
      */
-    public static $counter = 0;
+    public static int $counter = 0;
     /**
      * @var string the prefix to the automatically generated widget IDs.
      *
      * @see getId()
      */
-    public static $autoIdPrefix = 'i';
+    public static string $autoIdPrefix = 'i';
     /**
      * @inheritDoc
      */
@@ -40,7 +42,7 @@ abstract class BaseHtml extends \yii\helpers\Html
      *
      * @param string $value static control value.
      * @param array $options the tag options in terms of name-value pairs. These will be rendered as
-     * the attributes of the resulting tag. There are also a special options:
+     * the attributes of the resulting tag. There are also special options:
      *
      * @return string generated HTML
      *
@@ -80,7 +82,10 @@ abstract class BaseHtml extends \yii\helpers\Html
 
     /**
      * {@inheritdoc}
+     *
      * Pass `true` in `$options['inline']` to generate [inline list](https://getbootstrap.com/docs/5.1/forms/checks-radios/#inline).
+     *
+     * @throws Exception
      */
     public static function radioList($name, $selection = null, $items = [], $options = []): string
     {
@@ -99,7 +104,13 @@ abstract class BaseHtml extends \yii\helpers\Html
 
             $encode = ArrayHelper::getValue($options, 'encode', true);
 
-            $options['item'] = function ($index, $label, $name, $checked, $value) use ($itemOptions, $wrapperOptions, $encode) {
+            $options['item'] = static function (
+                $index,
+                $label,
+                $name,
+                $checked,
+                $value
+            ) use ($itemOptions, $wrapperOptions, $encode) {
                 $itemOptions['value'] = $value;
                 if (!isset($itemOptions['label'])) {
                     $itemOptions['label'] = $encode ? static::encode($label) : $label;
@@ -114,7 +125,10 @@ abstract class BaseHtml extends \yii\helpers\Html
 
     /**
      * {@inheritdoc}
+     *
      * Pass `true` in `$options['inline']` to generate [inline list](https://getbootstrap.com/docs/5.1/forms/checks-radios/#inline).
+     *
+     * @throws Exception
      */
     public static function checkboxList($name, $selection = null, $items = [], $options = []): string
     {
@@ -133,7 +147,13 @@ abstract class BaseHtml extends \yii\helpers\Html
 
             $encode = ArrayHelper::getValue($options, 'encode', true);
 
-            $options['item'] = function ($index, $label, $name, $checked, $value) use ($itemOptions, $wrapperOptions, $encode) {
+            $options['item'] = static function (
+                $index,
+                $label,
+                $name,
+                $checked,
+                $value
+            ) use ($itemOptions, $wrapperOptions, $encode) {
                 $itemOptions['value'] = $value;
                 if (!isset($itemOptions['label'])) {
                     $itemOptions['label'] = $encode ? static::encode($label) : $label;

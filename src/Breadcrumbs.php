@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace yii\bootstrap5;
 
 /**
- * This widget represents a Bootstrap 5 component "Breadcrumb". It displays a list of links indicating the
- * position of the current page in the whole site hierarchy.
+ * This widget represents a Bootstrap 5 component "Breadcrumb."
+ * It displays a list of links indicating the position of the current page in the whole site hierarchy.
  *
  * ```php
  * echo Breadcrumbs::widget([
@@ -55,7 +55,8 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      * @var array|false the first hyperlink in the breadcrumbs (called home link).
      * Please refer to [[links]] on the format of the link.
      * If this property is not set, it will default to a link pointing to [[\yii\web\Application::homeUrl]]
-     * with the label 'Home'. If this property is false, the home link will not be rendered.
+     * with the label 'Home.'
+     * If this property is false, the home link will not be rendered.
      */
     public $homeLink = [];
     /**
@@ -67,11 +68,11 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      */
     public $activeItemTemplate = "<li class=\"breadcrumb-item active\" aria-current=\"page\">{link}</li>\n";
     /**
-     * @var array the HTML attributes for the widgets nav container tag.
+     * @var array the HTML attributes for the widget nav container tag.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $navOptions = ['aria' => ['label' => 'breadcrumb']];
+    public array $navOptions = ['aria' => ['label' => 'breadcrumb']];
 
     /**
      * {@inheritDoc}
@@ -145,14 +146,14 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      *
      * Please refer to {@see links} on the format of the link.
      *
-     * If this property is not set, it will default to a link pointing with the label 'Home'. If this property is false,
-     * the home link will not be rendered.
+     * If this property is not set, it will default to a link pointing with the label 'Home.'
+     * If this property is false, the home link will not be rendered.
      *
-     * @param array|false $value
+     * @param bool|array $value
      *
      * @return $this
      */
-    public function homeLink($value): self
+    public function homeLink(bool|array $value): self
     {
         $this->homeLink = $value;
 
@@ -190,7 +191,7 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
     }
 
     /**
-     * The HTML attributes for the widgets nav container tag.
+     * The HTML attributes for the widget nav container tag.
      *
      * {@see \yii\helpers\Html::renderTagAttributes()} for details on how attributes are being rendered.
      *

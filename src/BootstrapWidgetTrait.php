@@ -1,12 +1,13 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
-
-declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
@@ -16,7 +17,7 @@ use yii\helpers\Json;
 /**
  * BootstrapWidgetTrait is the trait, which provides basic for all Bootstrap widgets features.
  *
- * Note: class, which uses this trait must declare public field named `options` with the array default value:
+ * Note: class, which uses this trait, must declare public field named `options` with the array default value:
  *
  * ```php
  * class MyWidget extends \yii\base\Widget
@@ -42,14 +43,14 @@ trait BootstrapWidgetTrait
      * how to use the "Modal" component and the supported options (e.g. "backdrop").
      * If this property is false, `registerJs()` will not be called on the view to initialize the module.
      */
-    public $clientOptions = [];
+    public array|false $clientOptions = [];
     /**
      * @var array the event handlers for the underlying Bootstrap JS plugin.
      * Please refer to the corresponding Bootstrap plugin Web page for possible events.
      * For example, [this page](https://getbootstrap.com/docs/5.1/components/modal/#events) shows
      * how to use the "Modal" plugin and the supported events (e.g. "shown.bs.modal").
      */
-    public $clientEvents = [];
+    public array $clientEvents = [];
 
     /**
      * Initializes the widget.
@@ -58,9 +59,10 @@ trait BootstrapWidgetTrait
      *
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
+
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
@@ -71,7 +73,7 @@ trait BootstrapWidgetTrait
      *
      * @param string $name the name of the Bootstrap plugin
      */
-    protected function registerPlugin(string $name)
+    protected function registerPlugin(string $name): void
     {
         /**
          * @see https://github.com/twbs/bootstrap/blob/v5.2.0/js/index.esm.js
@@ -108,7 +110,7 @@ trait BootstrapWidgetTrait
     /**
      * Registers JS event handlers that are listed in [[clientEvents]].
      */
-    protected function registerClientEvents(string $name = null)
+    protected function registerClientEvents(string $name = null): void
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];

@@ -48,14 +48,14 @@ class Carousel extends Widget
      * @var array|null the labels for the previous and the next control buttons.
      * If null, it means the previous and the next control buttons should not be displayed.
      */
-    public $controls = [
+    public ?array $controls = [
         '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>',
         '<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>',
     ];
     /**
      * @var bool whether carousel indicators (<ol> tag with anchors to items) should be displayed or not.
      */
-    public $showIndicators = true;
+    public bool $showIndicators = true;
     /**
      * @var array list of slides in the carousel. Each array element represents a single
      * slide with the following structure:
@@ -71,11 +71,11 @@ class Carousel extends Widget
      * ]
      * ```
      */
-    public $items = [];
+    public array $items = [];
     /**
      * @var bool Animate slides with a fade transition instead of a slide. Defaults to `false`
      */
-    public $crossfade = false;
+    public bool $crossfade = false;
     /**
      * {@inheritdoc}
      */
@@ -86,7 +86,7 @@ class Carousel extends Widget
      *
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'carousel slide']);
@@ -152,8 +152,9 @@ class Carousel extends Widget
     public function renderItems(): string
     {
         $items = [];
-        for ($i = 0, $count = count($this->items); $i < $count; $i++) {
-            $items[] = $this->renderItem($this->items[$i], $i);
+
+        foreach ($this->items as $i => $iValue) {
+            $items[] = $this->renderItem($iValue, $i);
         }
 
         return Html::tag('div', implode("\n", $items), ['class' => 'carousel-inner']);
@@ -165,12 +166,12 @@ class Carousel extends Widget
      * @param array|string $item a single item from [[items]]
      * @param int $index the item index as the first item should be set to `active`
      *
-     * @throws InvalidConfigException if the item is invalid
-     * @throws Exception
-     *
      * @return string the rendering result
+     *@throws Exception
+     *
+     * @throws InvalidConfigException if the item is invalid
      */
-    public function renderItem($item, int $index): string
+    public function renderItem(array|string $item, int $index): string
     {
         if (is_string($item)) {
             $content = $item;

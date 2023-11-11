@@ -1,12 +1,13 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @link https://www.yiiframework.com/
  *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
-
-declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
@@ -15,8 +16,8 @@ use yii\base\InvalidConfigException;
 /**
  * A Bootstrap 5 enhanced version of [[\yii\widgets\ActiveForm]].
  *
- * This class mainly adds the [[layout]] property to choose a Bootstrap 5 form layout.
- * So for example to render a horizontal form you would:
+ * This class mainly adds the [[layout]] property to choose a Bootstrap5 form layout.
+ * So, for example, to render a horizontal form you would:
  *
  * ```php
  * use yii\bootstrap5\ActiveForm;
@@ -39,7 +40,7 @@ use yii\base\InvalidConfigException;
  * ]
  * ```
  *
- * To get a different column layout in horizontal mode you can modify those options
+ * To get a different column layout in horizontal mode, you can modify those options
  * through [[fieldConfig]]:
  *
  * ```php
@@ -90,20 +91,16 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public $fieldClass = ActiveField::class;
     /**
-     * @var array HTML attributes for the form tag. Default is `[]`.
-     */
-    public $options = [];
-    /**
      * @var string the form layout. Either [[LAYOUT_DEFAULT]], [[LAYOUT_HORIZONTAL]] or [[LAYOUT_INLINE]].
      * By choosing a layout, an appropriate default field configuration is applied. This will
      * render the form fields with slightly different markup for each layout. You can
      * override these defaults through [[fieldConfig]].
      *
-     * @see ActiveField for details on Bootstrap 5 field configuration
+     * @see ActiveField for details on Bootstrap5 field configuration
      */
-    public $layout = self::LAYOUT_DEFAULT;
+    public string $layout = self::LAYOUT_DEFAULT;
     /**
-     * @var string the CSS class that is added to a field container when the associated attribute has validation error.
+     * @var string the CSS class that is added to a field container when the associated attribute has a validation error.
      */
     public $errorCssClass = 'is-invalid';
     /**
@@ -124,7 +121,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      *
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         if (!in_array($this->layout, [self::LAYOUT_DEFAULT, self::LAYOUT_HORIZONTAL, self::LAYOUT_INLINE, self::LAYOUT_FLOATING])) {
             throw new InvalidConfigException('Invalid layout type: ' . $this->layout);

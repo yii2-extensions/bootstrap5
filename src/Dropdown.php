@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace yii\bootstrap5;
 
 use Exception;
+use Throwable;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
@@ -41,7 +42,7 @@ use yii\helpers\ArrayHelper;
 class Dropdown extends Widget
 {
     /**
-     * @var array list of menu items in the dropdown. Each array element can be either an HTML string,
+     * @var array list of menu items in the dropdown. Each array element can be either an HTML string.
      * or an array representing a single menu with the following structure:
      *
      * - label: string, required, the label of the item link.
@@ -55,25 +56,25 @@ class Dropdown extends Widget
      * - active: bool, optional, whether the item should be on active state or not.
      * - items: array, optional, the submenu items. The structure is the same as this property.
      *   Note that Bootstrap doesn't support dropdown submenu. You have to add your own CSS styles to support it.
-     * - submenuOptions: array, optional, the HTML attributes for sub-menu container tag. If specified it will be
+     * - submenuOptions: array, optional, the HTML attributes for sub-menu container tag. If specified, it will be
      *   merged with [[submenuOptions]].
      *
      * To insert divider use `-`.
      */
-    public $items = [];
+    public array $items = [];
     /**
      * @var bool whether the labels for header items should be HTML-encoded.
      */
-    public $encodeLabels = true;
+    public bool $encodeLabels = true;
     /**
      * @var array|null the HTML attributes for sub-menu container tags.
      */
-    public $submenuOptions = [];
+    public ?array $submenuOptions = [];
 
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'dropdown-menu']);
@@ -82,9 +83,10 @@ class Dropdown extends Widget
     /**
      * Renders the widget.
      *
-     * @throws InvalidConfigException
-     *
      * @return string
+     *
+     * @throws InvalidConfigException
+     * @throws Throwable
      */
     public function run(): string
     {
@@ -100,10 +102,11 @@ class Dropdown extends Widget
      * @param array $items the menu items to be rendered
      * @param array $options the container HTML attributes
      *
-     * @throws InvalidConfigException if the label option is not specified in one of the items.
-     * @throws Exception
-     *
      * @return string the rendering result.
+     *
+     * @throws Exception
+     * @throws Throwable
+     * @throws InvalidConfigException if the label option is not specified in one of the items.
      */
     protected function renderItems(array $items, array $options = []): string
     {
@@ -138,7 +141,7 @@ class Dropdown extends Widget
                 Html::addCssClass($linkOptions, ['activate' => 'active']);
             }
 
-            $url = array_key_exists('url', $item) ? $item['url'] : null;
+            $url = $item['url'] ?? null;
             if (empty($item['items'])) {
                 if ($url === null) {
                     $content = Html::tag('h6', $label, ['class' => 'dropdown-header']);

@@ -55,16 +55,16 @@ class ButtonGroup extends Widget
      * - options: array, optional, the HTML attributes of the button.
      * - visible: bool, optional, whether this button is visible. Defaults to true.
      */
-    public $buttons = [];
+    public array $buttons = [];
     /**
      * @var bool whether to HTML-encode the button labels.
      */
-    public $encodeLabels = true;
+    public bool $encodeLabels = true;
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'btn-group']);
@@ -108,7 +108,7 @@ class ButtonGroup extends Widget
                 if (!isset($button['encodeLabel'])) {
                     $button['encodeLabel'] = $this->encodeLabels;
                 }
-                if (!isset($button['options'], $button['options']['type'])) {
+                if (!isset($button['options']['type'])) {
                     ArrayHelper::setValue($button, 'options.type', 'button');
                 }
                 $buttons[] = Button::widget($button);

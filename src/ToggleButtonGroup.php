@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Exception;
 use yii\base\InvalidConfigException;
 
 /**
@@ -47,30 +48,30 @@ class ToggleButtonGroup extends InputWidget
     /**
      * @var string input type, can be [[TYPE_CHECKBOX]] or [[TYPE_RADIO]]
      */
-    public $type;
+    public string $type;
     /**
      * @var array the data item used to generate the checkboxes.
      * The array values are the labels, while the array keys are the corresponding checkbox or radio values.
      */
-    public $items = [];
+    public array $items = [];
     /**
-     * @var array, the HTML attributes for the label (button) tag.
+     * @var array the HTML attributes for the label (button) tag.
      *
      * @see Html::checkbox()
      * @see Html::radio()
      */
-    public $labelOptions = [
+    public array $labelOptions = [
         'class' => ['btn', 'btn-outline-secondary'],
     ];
     /**
-     * @var bool whether the items labels should be HTML-encoded.
+     * @var bool whether the item labels should be HTML-encoded.
      */
-    public $encodeLabels = true;
+    public bool $encodeLabels = true;
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         $this->registerPlugin('button');
@@ -81,9 +82,10 @@ class ToggleButtonGroup extends InputWidget
     /**
      * {@inheritdoc}
      *
-     * @throws InvalidConfigException
-     *
      * @return string
+     *
+     * @throws Exception
+     * @throws InvalidConfigException
      */
     public function run(): string
     {
@@ -104,7 +106,7 @@ class ToggleButtonGroup extends InputWidget
                 return Html::radioList($this->name, $this->value, $this->items, $this->options);
 
             default:
-                throw new InvalidConfigException("Unsupported type '{$this->type}'");
+                throw new InvalidConfigException("Unsupported type '$this->type'");
         }
     }
 
@@ -114,7 +116,7 @@ class ToggleButtonGroup extends InputWidget
      * @param int $index item index.
      * @param string $label item label.
      * @param string $name input name.
-     * @param bool $checked whether value is checked or not.
+     * @param bool $checked whether the value is checked or not.
      * @param string $value input value.
      *
      * @return string generated HTML.

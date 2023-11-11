@@ -33,15 +33,15 @@ class Button extends Widget
     /**
      * @var string the tag to use to render the button
      */
-    public $tagName = 'button';
+    public string $tagName = 'button';
     /**
      * @var string the button label
      */
-    public $label = 'Button';
+    public string $label = 'Button';
     /**
      * @var bool whether the label should be HTML-encoded.
      */
-    public $encodeLabel = true;
+    public bool $encodeLabel = true;
 
     /**
      * Initializes the widget.
@@ -49,7 +49,7 @@ class Button extends Widget
      *
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         $this->clientOptions = [];
