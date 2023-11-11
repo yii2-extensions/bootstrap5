@@ -145,11 +145,11 @@ class Accordion extends Widget
     /**
      * Renders collapsible items as specified on [[items]].
      *
-     * @return string the rendering result.
-     *
      * @throws InvalidConfigException if label isn't specified.
      * @throws Exception
      * @throws Throwable
+     *
+     * @return string the rendering result.
      */
     public function renderItems(): string
     {
@@ -191,11 +191,11 @@ class Accordion extends Widget
      * @param array $item a single item from [[items]].
      * @param int $index the item index as each item group content must have an id.
      *
-     * @return string the rendering result.
-     *
      * @throws Exception
      * @throws Throwable
      * @throws InvalidConfigException
+     *
+     * @return string the rendering result.
      */
     public function renderItem(string $header, array $item, int $index): string
     {

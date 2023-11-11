@@ -179,7 +179,7 @@ class ButtonDropdown extends Widget
             if (is_array($buttonOptions['href'])) {
                 $buttonOptions['href'] = Url::to($buttonOptions['href']);
             }
-        } else if ($this->tagName === 'a') {
+        } elseif ($this->tagName === 'a') {
             $buttonOptions['href'] = '#';
             $buttonOptions['role'] = 'button';
         }

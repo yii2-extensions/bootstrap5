@@ -272,7 +272,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * @see https://getbootstrap.com/docs/5.1/forms/checks-radios/#switches
      */
-    public function checkbox($options = [], $enclosedByLabel = false): ActiveField
+    public function checkbox($options = [], $enclosedByLabel = false): self
     {
         $checkOptions = $this->checkOptions;
         $options = ArrayHelper::merge($checkOptions, $options);
@@ -317,7 +317,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function radio($options = [], $enclosedByLabel = false): ActiveField
+    public function radio($options = [], $enclosedByLabel = false): self
     {
         $checkOptions = $this->radioOptions;
         $options = ArrayHelper::merge($checkOptions, $options);
@@ -354,7 +354,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * @throws Exception
      */
-    public function checkboxList($items, $options = []): ActiveField
+    public function checkboxList($items, $options = []): self
     {
         if (!isset($options['item'])) {
             $this->template = str_replace("\n{error}", '', $this->template);
@@ -398,7 +398,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * @throws Exception
      */
-    public function radioList($items, $options = []): ActiveField
+    public function radioList($items, $options = []): self
     {
         if (!isset($options['item'])) {
             $this->template = str_replace("\n{error}", '', $this->template);
@@ -440,7 +440,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function listBox($items, $options = []): ActiveField
+    public function listBox($items, $options = []): self
     {
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
@@ -453,7 +453,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function dropDownList($items, $options = []): ActiveField
+    public function dropDownList($items, $options = []): self
     {
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
@@ -488,7 +488,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function label($label = null, $options = []): ActiveField
+    public function label($label = null, $options = []): self
     {
         if (is_bool($label)) {
             $this->enableLabel = $label;
@@ -520,7 +520,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function fileInput($options = []): ActiveField
+    public function fileInput($options = []): self
     {
         Html::addCssClass($options, ['widget' => 'form-control']);
 
@@ -540,7 +540,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * @see https://getbootstrap.com/docs/5.1/forms/range/
      */
-    public function rangeInput(array $options = []): ActiveField
+    public function rangeInput(array $options = []): self
     {
         Html::addCssClass($options, ['widget' => 'form-range']);
 
@@ -556,7 +556,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * @see https://getbootstrap.com/docs/5.1/forms/form-control/#color
      */
-    public function colorInput(array $options = []): ActiveField
+    public function colorInput(array $options = []): self
     {
         Html::removeCssClass($options, 'form-control');
         Html::addCssClass($options, ['widget' => 'form-control form-control-color']);

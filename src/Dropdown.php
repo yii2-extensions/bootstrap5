@@ -83,10 +83,10 @@ class Dropdown extends Widget
     /**
      * Renders the widget.
      *
-     * @return string
-     *
      * @throws InvalidConfigException
      * @throws Throwable
+     *
+     * @return string
      */
     public function run(): string
     {
@@ -102,11 +102,11 @@ class Dropdown extends Widget
      * @param array $items the menu items to be rendered
      * @param array $options the container HTML attributes
      *
-     * @return string the rendering result.
-     *
      * @throws Exception
      * @throws Throwable
      * @throws InvalidConfigException if the label option is not specified in one of the items.
+     *
+     * @return string the rendering result.
      */
     protected function renderItems(array $items, array $options = []): string
     {

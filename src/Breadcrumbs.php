@@ -149,7 +149,7 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      * If this property is not set, it will default to a link pointing with the label 'Home.'
      * If this property is false, the home link will not be rendered.
      *
-     * @param bool|array $value
+     * @param array|bool $value
      *
      * @return $this
      */
