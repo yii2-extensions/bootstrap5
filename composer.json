@@ -11,6 +11,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
+        "oomphinc/composer-installers-extender": "^2.0",
         "yii2-extensions/asset-bootstrap5": "dev-main",
         "yiisoft/yii2": "^2.2"
     },
