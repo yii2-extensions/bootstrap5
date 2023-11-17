@@ -11,7 +11,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
-        "npm-asset/bootstrap": "^5.3",
+        "yii2-extensions/asset-bootstrap5": "dev-main",
         "yiisoft/yii2": "^2.2"
     },
     "require-dev": {
@@ -38,12 +38,24 @@
         },
         "config-plugin": {
             "yii2-bootstrap5": "extension.php"
+        },
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
+        "installer-paths": {
+            "./node_modules/{$name}": [
+                "type:bower-asset",
+                "type:npm-asset"
+            ]
         }
     },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
+            "yiisoft/yii2-composer": true,
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "scripts": {

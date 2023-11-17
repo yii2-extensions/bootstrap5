@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace yii\bootstrap5;
 
 use Exception;
+use Yii2\Asset\BootstrapAsset;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
