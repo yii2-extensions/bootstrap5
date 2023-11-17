@@ -14,6 +14,7 @@ namespace yii\bootstrap5;
 use Exception;
 use Throwable;
 use Yii;
+use Yii2\Asset\BootstrapAsset;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 

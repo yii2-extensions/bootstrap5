@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace yii\bootstrap5;
 
 use Throwable;
+use Yii2\Asset\BootstrapAsset;
 
 use function implode;
 use function is_array;

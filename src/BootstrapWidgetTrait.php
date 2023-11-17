@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Yii2\Asset\BootstrapPluginAsset;
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 
