@@ -19,15 +19,6 @@
     <a href="https://codecov.io/gh/yii2-extensions/bootstrap5" target="_blank">
         <img src="https://codecov.io/gh/yii2-extensions/bootstrap5/branch/main/graph/badge.svg?token=MF0XUGVLYC" alt="Codecov">
     </a>
-    <a href="https://github.com/yii2-extensions/bootstrap5/actions/workflows/static.yml" target="_blank">
-        <img src="https://github.com/yii2-extensions/gii/actions/workflows/static.yml/badge.svg" alt="PHPStan">
-    </a>
-    <a href="https://github.com/yii2-extensions/bootstrap5/actions/workflows/static.yml" target="_blank">
-        <img src="https://img.shields.io/badge/PHPStan%20level-2-blue" alt="PHPStan level">
-    </a>
-    <a href="https://github.styleci.io/repos/717251172?branch=main" target="_blank">
-        <img src="https://github.styleci.io/repos/717251172/shield?branch=main" alt="Code style">
-    </a>    
 </p>
 
 ## Requirements
@@ -43,6 +34,12 @@ For install this package, you need [composer](https://getcomposer.org/).
 ## Testing
 
 [Check the documentation testing](/docs/testing.md) to learn about testing.
+
+## Quality code
+
+[![static-analysis](https://github.com/yii2-extensions/gii/actions/workflows/static.yml/badge.svg)](https://github.com/yii2-extensions/bootstrap5/actions/workflows/static.yml)
+[![phpstan-level](https://img.shields.io/badge/PHPStan%20level-2-blue)](https://github.com/yii2-extensions/bootstrap5/actions/workflows/static.yml)
+[![StyleCI](https://github.styleci.io/repos/717251172/shield?branch=main)](https://github.styleci.io/repos/717251172?branch=main)
 
 ## Our social networks
 
