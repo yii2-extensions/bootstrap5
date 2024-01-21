@@ -44,6 +44,11 @@ For install this package, you need [composer](https://getcomposer.org/).
 [![phpstan-level](https://img.shields.io/badge/PHPStan%20level-2-blue)](https://github.com/yii2-extensions/bootstrap5/actions/workflows/static.yml)
 [![StyleCI](https://github.styleci.io/repos/717251172/shield?branch=main)](https://github.styleci.io/repos/717251172?branch=main)
 
+## Support versions Yii2
+
+[![Yii20](https://img.shields.io/badge/Yii2%20version-2.0-blue)](https://github.com/yiisoft/yii2/tree/2.0.49.3)
+[![Yii22](https://img.shields.io/badge/Yii2%20version-2.2-blue)](https://github.com/yiisoft/yii2/tree/2.2)
+
 ## Our social networks
 
 [![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/Terabytesoftw)
