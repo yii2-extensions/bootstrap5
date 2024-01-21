@@ -64,8 +64,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
             'vendorPath' => dirname(__DIR__) . '/vendor',
             'language' => 'en-US',
             'aliases' => [
-                '@bower' => dirname(__DIR__) . '/node_modules',
-                '@npm' => dirname(__DIR__) . '/node_modules',
+                '@bower' => '@vendor/bower-asset',
+                '@npm' => '@vendor/npm-asset',
             ],
             'components' => [
                 'i18n' => [
